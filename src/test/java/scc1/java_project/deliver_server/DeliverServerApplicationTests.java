@@ -1,16 +1,24 @@
 package scc1.java_project.deliver_server;
 
+import org.apache.ibatis.session.RowBounds;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import scc1.java_project.deliver_server.dao.PackageMapper;
+
+import javax.annotation.Resource;
 
 @SpringBootTest
 class DeliverServerApplicationTests {
     static final String url = "http://localhost:8080";
     static final String usrsResource = "/usrs";
 
+    @Resource
+    private PackageMapper packageMapper;
+
     @Test
     void contextLoads() {
-        kMethod();
+        packageMapper.getSimpleOrderInfoBars(1,
+                new RowBounds(0,1));
     }
 
     static class ListNode {

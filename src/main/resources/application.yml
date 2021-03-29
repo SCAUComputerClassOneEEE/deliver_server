@@ -8,4 +8,5 @@ spring:
     password: MyNewPass4!
 
 mybatis:
-  mapper-locations: classpath:mappers/*mapper.xml
+  mapper-locations: classpath:mappers/*Mapper.xml
+  type-aliases-package: scc1.java_project.deliver_server.POJO

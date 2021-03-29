@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="scc1.java_project.deliver_server.dao.PackageMapper">
+    <resultMap id="simpleOrderResultMap"
+               type="scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar">
+        <id property="orderId" column="`order`.order_id" />
+        <result property="orderCreateTime" column="order_create_time"/>
+        <result property="receiveName" column="receive_name" />
+        <result property="orderStatus" column="order_status" />
+    </resultMap>
+
+    <select id="getSimpleOrderInfoBars"
+            resultMap="simpleOrderResultMap" parameterType="int">
+        SELECT
+            `order`.order_id, order_create_time, receive_name, order_status
+        FROM
+            `order`
+        LEFT JOIN package ON `order`.package_id = package.package_id
+        LEFT JOIN bill ON `order`.order_id = bill.order_id
+        WHERE
+            customer_id = #{customerId};
+    </select>
+
 
 </mapper>
