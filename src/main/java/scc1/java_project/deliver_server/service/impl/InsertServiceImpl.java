@@ -1,6 +1,6 @@
 package scc1.java_project.deliver_server.service.impl;
 
-import com.example.demo.service.InsertService;
+import scc1.java_project.deliver_server.service.InsertService;
 
 public class InsertServiceImpl implements InsertService {
     @Override

@@ -4,9 +4,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
 import scc1.java_project.deliver_server.service.QueryService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping({"/query"})
@@ -23,7 +25,7 @@ public class QueryController {
      * @return 所有该用户订单
      */
     @RequestMapping(value = {"/list"}, method = {RequestMethod.GET})
-    public Object packageList(@RequestParam("customer_id") int customerId) {
+    public List<SimpleOrderInfoBar> packageList(@RequestParam("customer_id") int customerId) {
         return null;
     }
 

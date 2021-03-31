@@ -1,10 +1,13 @@
 package scc1.java_project.deliver_server.service.impl;
 
-import com.example.demo.service.QueryService;
+import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
+import scc1.java_project.deliver_server.service.QueryService;
+
+import java.util.List;
 
 public class QueryServiceImpl implements QueryService {
     @Override
-    public Object packageList(int customerId) {
+    public List<SimpleOrderInfoBar> packageList(int customerId) {
         return null;
     }
 
