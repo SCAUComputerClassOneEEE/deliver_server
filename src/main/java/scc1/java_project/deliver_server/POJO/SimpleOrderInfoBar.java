@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 
 @Data
 public class SimpleOrderInfoBar {
-    private int orderId;
+    private long orderId;
     private Timestamp orderCreateTime;
     private String receiveName;
     private String orderStatus;

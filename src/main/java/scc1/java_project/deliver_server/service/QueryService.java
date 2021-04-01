@@ -1,14 +1,22 @@
 package scc1.java_project.deliver_server.service;
 
 
+import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
+import scc1.java_project.deliver_server.POJO.DamageRecord;
+import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
+import scc1.java_project.deliver_server.POJO.Transport;
+
+import java.math.BigDecimal;
+import java.util.List;
+
 public interface QueryService {
-    Object packageList(int customerId);
+    List<SimpleOrderInfoBar> packageList(long customerId, int offset, int length);
 
-    Object transport(int orderId);
+    Transport transport(long orderId);
 
-    Object damageOfPackages(int customerId);
+    DamageRecord damageOfPackages(long customerId);
 
-    Object arrearsLastMonth(int customerId);
+    long arrearsLastMonth(long customerId);
 
-    Object spendLastMonth(int customerId);
+    BillOfLastMonth spendLastMonth(long customerId);
 }

@@ -6,5 +6,5 @@ import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
 import java.util.List;
 
 public interface PackageMapper {
-    List<SimpleOrderInfoBar> getSimpleOrderInfoBars(int customerId, RowBounds rowBounds);
+    List<SimpleOrderInfoBar> getSimpleOrderInfoBars(long customerId, RowBounds rowBounds);
 }

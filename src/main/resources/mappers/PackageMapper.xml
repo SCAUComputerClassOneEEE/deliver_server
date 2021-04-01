@@ -10,7 +10,7 @@
     </resultMap>
 
     <select id="getSimpleOrderInfoBars"
-            resultMap="simpleOrderResultMap" parameterType="int">
+            resultMap="simpleOrderResultMap" parameterType="long">
         SELECT
             `order`.order_id, order_create_time, receive_name, order_status
         FROM
