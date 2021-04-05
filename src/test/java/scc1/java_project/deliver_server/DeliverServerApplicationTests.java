@@ -3,9 +3,11 @@ package scc1.java_project.deliver_server;
 import org.apache.ibatis.session.RowBounds;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
 import scc1.java_project.deliver_server.dao.PackageMapper;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @SpringBootTest
 class DeliverServerApplicationTests {
@@ -17,8 +19,9 @@ class DeliverServerApplicationTests {
 
     @Test
     void contextLoads() {
-        packageMapper.getSimpleOrderInfoBars(1,
-                new RowBounds(0,1));
+        List<SimpleOrderInfoBar> simpleOrderInfoBars = packageMapper.getSimpleOrderInfoBars(18899715136L,
+                new RowBounds(0, 2));
+        simpleOrderInfoBars.forEach(System.out::println);
     }
 
     static class ListNode {

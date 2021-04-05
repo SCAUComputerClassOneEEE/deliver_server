@@ -13,8 +13,7 @@ import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Controller
-@ResponseBody
+@RestController
 @RequestMapping({"/query"})
 /**
  * 用于查询（客户和管理员都可登入）
@@ -24,16 +23,14 @@ public class QueryController {
 //    @Autowired
     private QueryService queryService ;
 
-
     /**
      * @param customerId 客户id
      * @return 所有该用户订单
      */
-    @RequestMapping(value = {"/list"}, method = {RequestMethod.GET})
+    @GetMapping(value = {"/list"})
     public List<SimpleOrderInfoBar> packageList(@RequestParam("customer_id") long customerId,
                                                 @RequestParam("offset") int offset,
                                                 @RequestParam("length") int length) {
-
         return queryService.packageList(customerId, offset, length);
     }
 

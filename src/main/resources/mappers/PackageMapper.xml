@@ -3,7 +3,7 @@
 <mapper namespace="scc1.java_project.deliver_server.dao.PackageMapper">
     <resultMap id="simpleOrderResultMap"
                type="scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar">
-        <id property="orderId" column="`order`.order_id" />
+        <result property="orderId" column="order_id" />
         <result property="orderCreateTime" column="order_create_time"/>
         <result property="receiveName" column="receive_name" />
         <result property="orderStatus" column="order_status" />

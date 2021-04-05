@@ -6,7 +6,10 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: MyNewPass4!
-
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
 mybatis:
   mapper-locations: classpath:mappers/*Mapper.xml
   type-aliases-package: scc1.java_project.deliver_server.POJO
