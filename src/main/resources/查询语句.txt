@@ -38,26 +38,26 @@ FROM
 	transport
 LEFT JOIN damage_record ON transport.carrier_id = damage_record.carrier_id
 AND transport.carrier_type = damage_record.carrier_type
-AND transport.transport_times_of_carrier = damage_record.damage_rerocd_time
+AND transport.transport_times_of_carrier = damage_record.damage_record_time
 LEFT JOIN bill ON transport.order_id = bill.order_id
 LEFT JOIN customer ON bill.customer_id = customer.customer_id
 WHERE
 	customer.customer_id = "终端提供的客户id";
-
--- 5从终端获取数据，新建一个订单。需要插入到三个表中（package、order、bill）
--- 分别提供不同的信息
-INSERT INTO package
-VALUES
-	();
-
-INSERT INTO `order`
-VALUES
-	();
-
-INSERT INTO bill
-VALUES
-	();
-
+===================================================================
+-- 5从终端获取数据，新建一个订单。需要插入到三个表中(package、order、bill)  |
+--分别提供不同的信息                                                  |
+INSERT INTO package                                               |
+VALUES                                                            |
+	();                                                           |
+                                                                  |
+INSERT INTO `order`                                               |
+VALUES                                                            |
+	();                                                           |
+                                                                  |
+INSERT INTO bill                                                  |
+VALUES                                                            |
+	();                                                           |
+===================================================================
 -- 6通过customer_id查询上个月的欠费
 SELECT
 	SUM(charge) AS `上个月未支付`
@@ -93,20 +93,20 @@ GROUP BY
 
 -- 8客户端提供数据，对用户信息进行更新（密码，卡号等等）
 UPDATE customer
-SET custonmer_password = "提供的密码"
+SET customer_password = "提供的密码"
 WHERE
 	customer_id = "提供的id";
-
--- 9插入物流信息,由服务端提供
-INSERT INTO transport
-VALUES
-	();
-
--- 10新增出事载体，服务端输入
-INSERT INTO damage_record
-VALUES
-	();
-
+===================================================================
+-- 9插入物流信息,由服务端提供                                           |
+INSERT INTO transport                                              |
+VALUES                                                             |
+	();                                                            |
+                                                                   |
+-- 10新增出事载体，服务端输入                                           |
+INSERT INTO damage_record                                          |
+VALUES                                                             |
+	();                                                            |
+===================================================================
 -- 11去年寄件总数榜
 SELECT
 	customer_id,
@@ -166,13 +166,16 @@ ORDER BY
 LIMIT 10;
 
 -- 13客户最多的街道
+
 SELECT
 	street,
-	COUNT(street)
+	COUNT(street) as number
 FROM
 	customer
 GROUP BY
 	street
+order By number desc limit 10;
+
 HAVING
 	COUNT(street) >= ALL (
 		SELECT

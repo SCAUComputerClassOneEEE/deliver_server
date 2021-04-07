@@ -3,6 +3,7 @@ package scc1.javaProject.deliver_server.POJO;
 import lombok.Data;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 // 订单
@@ -15,9 +16,9 @@ public class Order {
     private String receiveName;
     private String receivePhoneNumber;
     private String receiveDetailAddress;
-    private Date orderCreateTime;
-    private Date commitArriveTime;
-    private Date actualArriveTime;
+    private Timestamp orderCreateTime;
+    private Timestamp commitArriveTime;
+    private Timestamp actualArriveTime;
     private String orderStatus;
     private Boolean isReturned;
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="scc1.java_project.deliver_server.dao.UserMapper">
+    <update id="updatePassWd" >
+        UPDATE customer SET customer_password = #{newPassWd}
+        WHERE customer_id = #{customerId};
+    </update>
+    <select id="getTopStreet"
+            resultType="scc1.java_project.deliver_server.POJO.StreetStatistics">
+        SELECT street, COUNT(street) as number
+        FROM customer
+        GROUP BY street
+        ORDER BY number DESC ;
+    </select>
+
+</mapper>

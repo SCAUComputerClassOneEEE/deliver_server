@@ -6,5 +6,5 @@ import lombok.Data;
 public class ConsumptionOfLastYear {
     private long orderId;
     private String customerName;
-    private long consumption;
+    private double consumption;
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="scc1.java_project.deliver_server.dao.BillStatisticsMapper">
+    <resultMap id="billOfLastMonthRM" type="scc1.java_project.deliver_server.POJO.BillOfLastMonth">
+        <result property="payType" column="pay_type"/>
+        <result property="count" column="bill_count"/>
+        <result property="number" column="bill_number"/>
+    </resultMap>
+
+    <select id="getLastMonthArrears" resultType="double" parameterType="long">
+        SELECT SUM(charge) FROM bill
+        NATURAL JOIN `order` NATURAL JOIN customer
+        WHERE is_paid = 0
+        AND PERIOD_DIFF(date_format(now(), '%Y%m'),date_format(order_create_time, '%Y%m')) &lt;= 1
+        AND customer.customer_id = #{customerId};
+    </select>
+
+    <select id="getBillStatisticLastMonth" resultMap="billOfLastMonthRM" parameterType="long">
+        SELECT pay_type, COUNT(charge) as bill_count, SUM(charge) as bill_number
+        FROM bill NATURAL JOIN `order` NATURAL JOIN customer
+        WHERE customer.customer_id = #{customerId}
+        AND PERIOD_DIFF(date_format(now(), '%Y%m'), date_format(order_create_time, '%Y%m')) &lt;= 1
+        GROUP BY pay_type;
+    </select>
+
+    <select id="getTopConsumptionOfLastYear"
+            resultType="scc1.java_project.deliver_server.POJO.ConsumptionOfLastYear">
+        SELECT customer_id, customer_name, SUM(charge)
+        FROM bill NATURAL JOIN `order` NATURAL JOIN customer
+        WHERE DATE_SUB(CURDATE(), INTERVAL 365 DAY) &lt;= date(order_create_time)
+        GROUP BY customer_id
+        HAVING SUM(charge) >= ALL (
+            SELECT SUM(charge)
+            FROM bill NATURAL JOIN `order`
+            WHERE DATE_SUB(CURDATE(), INTERVAL 365 DAY) &lt;= date(order_create_time)
+            GROUP BY customer_id
+        )
+        ORDER BY SUM(charge) DESC;
+    </select>
+</mapper>

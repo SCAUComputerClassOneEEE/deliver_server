@@ -8,6 +8,18 @@
         <result property="receiveName" column="receive_name" />
         <result property="orderStatus" column="order_status" />
     </resultMap>
+    <resultMap id="transportResultMap"
+               type="scc1.java_project.deliver_server.POJO.Transport">
+        <result property="transportId" column="transport_id"/>
+        <result property="orderId" column="order_id"/>
+        <result property="carrierId" column="carrier_id"/>
+        <result property="carrierType" column="carrier_type"/>
+        <result property="transportTimesOfCarrier" column="transport_times_of_carrier"/>
+        <result property="inputTime" column="input_time"/>
+        <result property="outputTime" column="output_time"/>
+        <result property="nextCarrierId" column="next_carrier_id"/>
+        <result property="nextCarrierType" column="next_carrier_type"/>
+    </resultMap>
 
     <select id="getSimpleOrderInfoBars"
             resultMap="simpleOrderResultMap" parameterType="long">
@@ -20,6 +32,35 @@
         WHERE
             customer_id = #{customerId};
     </select>
-
-
+    <select id="getTransports" resultMap="transportResultMap" parameterType="int">
+        SELECT * FROM transport WHERE order_id = #{orderId} ORDER BY input_time;
+    </select>
+    <select id="getDamagePackOrderId" resultType="int" parameterType="long">
+        SELECT DISTINCT transport.order_id
+        FROM transport
+        LEFT JOIN damage_record
+                            ON transport.carrier_id = damage_record.carrier_id
+                            AND transport.carrier_type = damage_record.carrier_type
+                            AND transport.transport_times_of_carrier = damage_record.damage_record_time
+        LEFT JOIN bill
+                            ON transport.order_id = bill.order_id
+        LEFT JOIN customer
+                            ON bill.customer_id = customer.customer_id
+        WHERE
+	        customer.customer_id = #{customerId};
+    </select>
+    <select id="getTopNumberOfLastYear"
+            resultType="scc1.java_project.deliver_server.POJO.ConsumptionOfLastYear">
+        SELECT customer_id as customerId, customer_name as customerName, COUNT(charge) as number
+        FROM bill NATURAL JOIN `order` NATURAL JOIN customer
+        WHERE DATE_SUB(CURDATE(), INTERVAL 365 DAY) &lt;= date(order_create_time)
+        GROUP BY customer_id
+        HAVING SUM(charge) >= ALL (
+            SELECT SUM(charge)
+            FROM bill NATURAL JOIN `order`
+            WHERE DATE_SUB(CURDATE(), INTERVAL 365 DAY) &lt;= date(order_create_time)
+            GROUP BY customer_id
+        )
+        ORDER BY COUNT(charge) DESC;
+    </select>
 </mapper>

@@ -6,5 +6,5 @@ import lombok.Data;
 public class DamageRecord {
     private long carrierId;
     private String carrierType;
-    private long damageRerocdTime;
+    private long damageRecordTime;
 }

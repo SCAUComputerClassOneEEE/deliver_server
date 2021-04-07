@@ -2,7 +2,7 @@ package scc1.java_project.deliver_server.POJO;
 
 import lombok.Data;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 public class Transport {
@@ -11,8 +11,8 @@ public class Transport {
     private long carrierId;
     private String carrierType;
     private long transportTimesOfCarrier;
-    private Date inputTime;
-    private Date outputTime;
+    private Timestamp inputTime;
+    private Timestamp outputTime;
     private long nextCarrierId;
     private String nextCarrierType;
 }

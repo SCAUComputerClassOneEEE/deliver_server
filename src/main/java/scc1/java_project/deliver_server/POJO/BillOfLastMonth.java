@@ -8,5 +8,5 @@ import java.math.BigDecimal;
 public class BillOfLastMonth {
     private String payType;
     private Integer count;
-    private BigDecimal number;
+    private Double number;
 }
