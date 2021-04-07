@@ -32,10 +32,10 @@
         WHERE
             customer_id = #{customerId};
     </select>
-    <select id="getTransports" resultMap="transportResultMap" parameterType="int">
+    <select id="getTransports" resultMap="transportResultMap" >
         SELECT * FROM transport WHERE order_id = #{orderId} ORDER BY input_time;
     </select>
-    <select id="getDamagePackOrderId" resultType="int" parameterType="long">
+    <select id="getDamagePackOrderId" resultType="long" parameterType="long">
         SELECT DISTINCT transport.order_id
         FROM transport
         LEFT JOIN damage_record

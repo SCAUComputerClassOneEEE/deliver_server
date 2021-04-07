@@ -39,15 +39,15 @@ public class QueryController {
      * 通过订单号查询完整的物流信息
      */
     @RequestMapping(value = {"/transport"}, method = {RequestMethod.GET})
-    public Transport transport(@RequestParam("order_id") long orderId) {
-        return queryService.transport(orderId);
+    public List<Transport> getTransports(@RequestParam("order_id") long orderId) {
+        return queryService.getTransports(orderId);
     }
 
     /**
      * 通过客户id查询损坏的包裹id
      */
     @RequestMapping(value = {"/damage"}, method = {RequestMethod.GET})
-    public DamageRecord damageOfPackages(@RequestParam("customer_id") long customerId) {
+    public List<Long> damageOfPackages(@RequestParam("customer_id") long customerId) {
         return queryService.damageOfPackages(customerId);
     }
 
@@ -55,8 +55,8 @@ public class QueryController {
      * 通过customer_id查询上个月的欠费
      */
     @RequestMapping(value = {"/arrears"}, method = {RequestMethod.GET})
-    public long arrearsLastMonth(@RequestParam("customer_id") long customerId) {
-        return queryService.arrearsLastMonth(customerId);
+    public Double arrearsLastMonth(@RequestParam("customer_id") long customerId) {
+        return queryService.arrearsLastMonth(customerId) == null ? 0.0 : queryService.arrearsLastMonth(customerId);
     }
 
 

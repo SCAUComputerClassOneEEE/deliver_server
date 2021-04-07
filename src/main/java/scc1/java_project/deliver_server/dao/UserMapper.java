@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface UserMapper {
     /*修改密码*/
-    void updatePassWd(@Param("customerId") long customerId,
+    int updatePassWd(@Param("customerId") long customerId,
                       @Param("newPassWd") String newPassWd);
 
     /*获取街道人数排行榜*/

@@ -1,22 +1,29 @@
 package scc1.java_project.deliver_server.service;
 
 
-import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
-import scc1.java_project.deliver_server.POJO.DamageRecord;
-import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
-import scc1.java_project.deliver_server.POJO.Transport;
+import org.apache.ibatis.session.RowBounds;
+import scc1.java_project.deliver_server.POJO.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 public interface QueryService {
+    /**
+     * 获取用户的简单订单信息
+     */
     List<SimpleOrderInfoBar> packageList(long customerId, int offset, int length);
 
-    Transport transport(long orderId);
+    /**
+     * 获取某订单的全部运输流程
+     */
+    List<Transport> getTransports(long orderId);
 
-    DamageRecord damageOfPackages(long customerId);
+    /**
+     * 获取用户的损坏包裹订单号
+     */
+    List<Long> damageOfPackages(long customerId);
 
-    long arrearsLastMonth(long customerId);
+    Double arrearsLastMonth(long customerId);
 
     BillOfLastMonth spendLastMonth(long customerId);
 }

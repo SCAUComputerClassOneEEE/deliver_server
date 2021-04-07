@@ -6,18 +6,19 @@ import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
 import scc1.java_project.deliver_server.POJO.DamageRecord;
 import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
 import scc1.java_project.deliver_server.POJO.Transport;
+import scc1.java_project.deliver_server.dao.BillStatisticsMapper;
 import scc1.java_project.deliver_server.dao.PackageMapper;
 import scc1.java_project.deliver_server.service.QueryService;
 
 import javax.annotation.Resource;
 import java.util.List;
 
-//@Repository
 @Service
 public class QueryServiceImpl implements QueryService {
-//    @Autowired
     @Resource
     private PackageMapper packageMapper;
+    @Resource
+    private BillStatisticsMapper billStatisticsMapper;
 
     @Override
     public List<SimpleOrderInfoBar> packageList(long customerId, int offset, int length) {
@@ -27,23 +28,23 @@ public class QueryServiceImpl implements QueryService {
     }
 
     @Override
-    public Transport transport(long orderId) {
-        return null;
+    public List<Transport> getTransports(long orderId) {
+        return packageMapper.getTransports(orderId);
     }
 
     @Override
-    public DamageRecord damageOfPackages(long customerId) {
-        return null;
+    public List<Long> damageOfPackages(long customerId) {
+        return packageMapper.getDamagePackOrderId(customerId);
     }
 
     @Override
-    public long arrearsLastMonth(long customerId) {
-        return 0;
+    public Double arrearsLastMonth(long customerId) {
+        return billStatisticsMapper.getLastMonthArrears(customerId);
     }
 
     @Override
     public BillOfLastMonth spendLastMonth(long customerId) {
-        return null;
+        return billStatisticsMapper.getBillStatisticLastMonth(customerId);
     }
 }
 

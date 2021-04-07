@@ -1,13 +1,17 @@
 package scc1.java_project.deliver_server.web;
 
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import scc1.java_project.deliver_server.POJO.Customer;
+import scc1.java_project.deliver_server.POJO.StreetStatistics;
 import scc1.java_project.deliver_server.service.UsersService;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping({"/user"})
@@ -35,16 +39,21 @@ public class UsersController {
 
     /**
      * 修改密码
-     * @param phoneNumber 手机号
+     * @param customerId 客户id
      * @param password 新密码
-     * @param type 用户类型（0客户，1管理员）用于不同的表
-     * @return 0表示修改失败，1表示修改成功(数字为update修改的行数)
+     * @return 是否修改成功
      */
     @RequestMapping(value = "/modify", method = RequestMethod.GET)
-    public Customer modify(@RequestParam("phone_number") long phoneNumber,
-                           @RequestParam("password") String password,
-                           @RequestParam("type") int type){
+    public boolean modify(@RequestParam("customerId") long customerId,
+                           @RequestParam("newPassWd") String password){
         // 调用service层（service层调用dao层）
-        return usersService.modify(phoneNumber, password, type);
+        System.out.println("1");
+        return usersService.modify(customerId, password) > 0 ? true : false;
+    }
+
+    /*获取街道人数排行榜*/
+    @RequestMapping(value = "/street", method = RequestMethod.GET)
+    public List<StreetStatistics> getTopStreet(@Param("offset") int offset, @Param("length") int length) {
+        return usersService.getTopStreet(new RowBounds(offset, length));
     }
 }

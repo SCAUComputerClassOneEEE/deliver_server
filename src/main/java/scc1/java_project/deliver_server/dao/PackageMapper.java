@@ -12,9 +12,9 @@ public interface PackageMapper {
     /*获取订单分页*/
     List<SimpleOrderInfoBar> getSimpleOrderInfoBars(long customerId, RowBounds rowBounds);
     /*获取某个订单的全部运输流程*/
-    List<Transport> getTransports(int orderId);
+    List<Transport> getTransports(long orderId);
     /*获取该客户出事的所有包裹*/
-    List<Integer> getDamagePackOrderId(long customerId);
+    List<Long> getDamagePackOrderId(long customerId);
     /*获取去年的寄件排行榜*/
     List<NumberOfLastYear> getTopNumberOfLastYear(RowBounds rowBounds);
 }
