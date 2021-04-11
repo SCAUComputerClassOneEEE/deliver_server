@@ -12,5 +12,4 @@
         GROUP BY street
         ORDER BY number DESC ;
     </select>
-
 </mapper>
