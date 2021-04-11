@@ -1,10 +1,8 @@
 package scc1.java_project.deliver_server.web;
 
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import scc1.javaProject.deliver_server.POJO.Order;
 import scc1.java_project.deliver_server.service.QueryService;
 
 import javax.annotation.Resource;

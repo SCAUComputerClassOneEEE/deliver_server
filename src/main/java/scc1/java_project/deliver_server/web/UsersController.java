@@ -48,7 +48,7 @@ public class UsersController {
                            @RequestParam("newPassWd") String password){
         // 调用service层（service层调用dao层）
         System.out.println("1");
-        return usersService.modify(customerId, password) > 0 ? true : false;
+        return usersService.modify(customerId, password) > 0;
     }
 
     /*获取街道人数排行榜*/
