@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class Carrier {
-    private long carrierId;
+    private Long carrierId;
     private String  carrierType;
-    private long deliveryTimes;
+    private Long deliveryTimes;
     private String connectPhoneNumber;
     private String detailMessage;
 }

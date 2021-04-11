@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="scc1.java_project.deliver_server.dao.InsertMapper">
+    <parameterMap id="package" type="scc1.java_project.deliver_server.POJO.Package"/>
+    <parameterMap id="order" type="scc1.java_project.deliver_server.POJO.Order"/>
+    <parameterMap id="bill" type="scc1.java_project.deliver_server.POJO.Bill"/>
+    <parameterMap id="transport" type="scc1.java_project.deliver_server.POJO.Transport"/>
+    <parameterMap id="damageRecord" type="scc1.java_project.deliver_server.POJO.DamageRecord"/>
+
+    <insert id="insertPackage" parameterMap="package">
+        insert into package (package_id, package_type, package_weight, is_dangerous, is_international, detail_message)
+        values (#{packageId}, #{packageType}, #{packageWeight}, #{isDangerous}, #{isInternational}, #{detailMessage});
+    </insert>
+
+    <insert id="insertOrder" parameterMap="order">
+        insert into `order` (order_id,package_id,send_name,send_phone_number,send_detail_address
+                            ,order_status,receive_phone_number,receive_name,order_create_time
+                            ,is_returned,receive_detail_address,commit_arrive_time,actual_arrive_time)
+        values (#{orderId}, #{packageId}, #{sendName}, #{sendPhoneNumber}, #{sendDetailAddress},
+        #{receiveName}, #{receivePhoneNumber}, #{receiveDetailAddress}, #{orderCreateTime},
+        #{commitArriveTime}, #{actualArriveTime}, #{orderStatus}, #{isReturned});
+    </insert>
+
+    <insert id="insertBill" parameterMap="bill">
+        insert into bill (order_id, customer_id, charge, batch_number, pay_type, is_paid)
+        values (#{orderId}, #{customerId}, #{charge}, #{batchNumber}, #{payType}, #{isPaid});
+    </insert>
+
+    <insert id="insertTransport" parameterMap="transport">
+        insert into transport (transport_id, order_id, carrier_id, carrier_type, transport_times_of_carrier,
+                                input_time, output_time, next_carrier_id, next_carrier_type, status,
+                                detail_massage)
+        values (#{transportId}, #{orderId}, #{carrierId}, #{carrierType}, #{transportTimesOfCarrier},
+                #{inputTime}, #{outputTime}, #{nextCarrierId}, #{nextCarrierType}, #{status}, #{detailMassage});
+    </insert>
+
+    <insert id="insertDamageRecord" parameterMap="damageRecord">
+        insert into damage_record (carrier_id, carrier_type, damage_record_time)
+        values (#{carrierId}, #{carrierType}, #{damageRecordTime});
+    </insert>
+
+</mapper>

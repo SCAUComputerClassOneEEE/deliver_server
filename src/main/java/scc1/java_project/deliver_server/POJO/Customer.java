@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 // 客户
 public class Customer {
-    private long customerId;
-    private long customerPhoneNumber;
+    private Long customerId;
+    private Long customerPhoneNumber;
     private String customerPassword;
     private String customerName;
     private String city;

@@ -1,15 +1,18 @@
-package scc1.javaProject.deliver_server.POJO;
+package scc1.java_project.deliver_server.POJO;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 // 订单
 public class Order {
-    private long orderId;
-    private long packageId;
+    private Long orderId;
+    private Long packageId;
     private String sendName;
     private String sendPhoneNumber;
     private String sendDetailAddress;
@@ -21,4 +24,9 @@ public class Order {
     private Timestamp actualArriveTime;
     private String orderStatus;
     private Boolean isReturned;
+
+    public Order(Long orderId, Long packageId) {
+        this.orderId = orderId;
+        this.packageId = packageId;
+    }
 }

@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class NumberOfLastYear {
-    private long customerId;
+    private Long customerId;
     private String customerName;
-    private int number;
+    private Integer number;
 }

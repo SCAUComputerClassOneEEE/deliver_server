@@ -1,16 +1,20 @@
 package scc1.java_project.deliver_server.POJO;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 // 包裹
 public class Package {
-    private long packageId;
+    private Long packageId;
     private String packageType;
-    private BigDecimal packageWeight;
-    private byte isDangerous;
-    private byte isInternational;
+    private Double packageWeight;
+    private Boolean isDangerous;
+    private Boolean isInternational;
     private String detailMessage;
 }

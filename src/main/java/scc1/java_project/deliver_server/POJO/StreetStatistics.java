@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class StreetStatistics {
     private String street;
-    private int number;
+    private Integer number;
 }

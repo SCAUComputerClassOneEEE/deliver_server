@@ -1,9 +1,12 @@
 package scc1.java_project.deliver_server.service;
 
+import scc1.java_project.deliver_server.POJO.DamageRecord;
+import scc1.java_project.deliver_server.POJO.Transport;
+
 public interface InsertService {
-    Object createOrder();
+    void createOrder();
 
-    Object insertTransport();
+    int insertTransport(Transport transport);
 
-    Object insertDamageRecord();
+    int insertDamageRecord(DamageRecord damageRecord);
 }
