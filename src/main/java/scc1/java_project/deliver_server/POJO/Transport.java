@@ -16,4 +16,5 @@ public class Transport {
     private long nextCarrierId;
     private String nextCarrierType;
     private String status;
+    private String detailMessage;
 }

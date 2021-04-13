@@ -21,6 +21,7 @@
         <result property="outputTime" column="output_time"/>
         <result property="nextCarrierId" column="next_carrier_id"/>
         <result property="nextCarrierType" column="next_carrier_type"/>
+        <result property="detailMessage" column="trans_detail_message"/>
     </resultMap>
 
     <select id="getSimpleOrderInfoBars"
