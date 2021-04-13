@@ -15,4 +15,5 @@ public class Transport {
     private Timestamp outputTime;
     private long nextCarrierId;
     private String nextCarrierType;
+    private String status;
 }
