@@ -1,16 +1,12 @@
 package scc1.java_project.deliver_server.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
-import scc1.java_project.deliver_server.POJO.DamageRecord;
 import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
-import scc1.java_project.deliver_server.POJO.Transport;
+import scc1.java_project.deliver_server.dbEntity.Transport;
 import scc1.java_project.deliver_server.service.QueryService;
 
 import javax.annotation.Resource;
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController

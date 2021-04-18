@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import scc1.java_project.deliver_server.POJO.Customer;
+import scc1.java_project.deliver_server.dbEntity.Customer;
 import scc1.java_project.deliver_server.POJO.StreetStatistics;
 import scc1.java_project.deliver_server.service.UsersService;
 

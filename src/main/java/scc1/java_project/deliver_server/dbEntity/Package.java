@@ -1,4 +1,4 @@
-package scc1.java_project.deliver_server.POJO;
+package scc1.java_project.deliver_server.dbEntity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

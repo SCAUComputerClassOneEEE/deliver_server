@@ -1,7 +1,7 @@
 package scc1.java_project.deliver_server.service;
 
 import org.apache.ibatis.session.RowBounds;
-import scc1.java_project.deliver_server.POJO.Customer;
+import scc1.java_project.deliver_server.dbEntity.Customer;
 import scc1.java_project.deliver_server.POJO.StreetStatistics;
 
 import java.util.List;

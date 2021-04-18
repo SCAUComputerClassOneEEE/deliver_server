@@ -2,9 +2,8 @@ package scc1.java_project.deliver_server.service.impl;
 
 
 import org.apache.ibatis.session.RowBounds;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import scc1.java_project.deliver_server.POJO.Customer;
+import scc1.java_project.deliver_server.dbEntity.Customer;
 import scc1.java_project.deliver_server.POJO.StreetStatistics;
 import scc1.java_project.deliver_server.dao.UserMapper;
 import scc1.java_project.deliver_server.service.UsersService;
