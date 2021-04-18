@@ -10,4 +10,6 @@ public class SimpleOrderInfoBar {
     private Timestamp orderCreateTime;
     private String receiveName;
     private String orderStatus;
+    private String sendDetailAddress;
+    private String receiveDetailAddress;
 }

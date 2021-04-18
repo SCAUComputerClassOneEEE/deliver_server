@@ -7,6 +7,8 @@
         <result property="orderCreateTime" column="order_create_time"/>
         <result property="receiveName" column="receive_name" />
         <result property="orderStatus" column="order_status" />
+        <result property="sendDetailAddress" column="send_detail_address"/>
+        <result property="receiveDetailAddress" column="receive_detail_address"/>
     </resultMap>
     <resultMap id="transportResultMap"
                type="scc1.java_project.deliver_server.POJO.Transport">
@@ -19,12 +21,19 @@
         <result property="outputTime" column="output_time"/>
         <result property="nextCarrierId" column="next_carrier_id"/>
         <result property="nextCarrierType" column="next_carrier_type"/>
+        <result property="detailMessage" column="trans_detail_message"/>
     </resultMap>
 
     <select id="getSimpleOrderInfoBars"
-            resultMap="simpleOrderResultMap" parameterType="long">
+            resultMap="simpleOrderResultMap"
+            parameterType="long">
         SELECT
-            `order`.order_id, order_create_time, receive_name, order_status
+            `order`.order_id,
+            order_create_time,
+            receive_name,
+            order_status,
+            `order`.send_detail_address,
+            `order`.receive_detail_address
         FROM
             `order`
         LEFT JOIN package ON `order`.package_id = package.package_id
