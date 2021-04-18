@@ -3,9 +3,8 @@ package scc1.java_project.deliver_server.service.impl;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
-import scc1.java_project.deliver_server.POJO.DamageRecord;
 import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
-import scc1.java_project.deliver_server.POJO.Transport;
+import scc1.java_project.deliver_server.dbEntity.Transport;
 import scc1.java_project.deliver_server.dao.BillStatisticsMapper;
 import scc1.java_project.deliver_server.dao.PackageMapper;
 import scc1.java_project.deliver_server.service.QueryService;
@@ -22,9 +21,7 @@ public class QueryServiceImpl implements QueryService {
 
     @Override
     public List<SimpleOrderInfoBar> packageList(long customerId, int offset, int length) {
-        List<SimpleOrderInfoBar> simpleOrderInfoBars = packageMapper.getSimpleOrderInfoBars(customerId, new RowBounds(offset, length));
-        simpleOrderInfoBars.forEach(System.out::println);
-        return simpleOrderInfoBars;
+        return packageMapper.getSimpleOrderInfoBars(customerId, new RowBounds(offset, length));
     }
 
     @Override

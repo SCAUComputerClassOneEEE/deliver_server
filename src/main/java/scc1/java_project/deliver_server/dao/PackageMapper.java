@@ -1,10 +1,9 @@
 package scc1.java_project.deliver_server.dao;
 
 import org.apache.ibatis.session.RowBounds;
-import scc1.java_project.deliver_server.POJO.ConsumptionOfLastYear;
 import scc1.java_project.deliver_server.POJO.NumberOfLastYear;
 import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
-import scc1.java_project.deliver_server.POJO.Transport;
+import scc1.java_project.deliver_server.dbEntity.Transport;
 
 import java.util.List;
 

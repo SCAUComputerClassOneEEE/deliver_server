@@ -2,7 +2,9 @@ package scc1.java_project.deliver_server.web;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import scc1.javaProject.deliver_server.POJO.Order;
+import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
+import scc1.java_project.deliver_server.dbEntity.DamageRecord;
+import scc1.java_project.deliver_server.dbEntity.Transport;
 import scc1.java_project.deliver_server.service.QueryService;
 
 import javax.annotation.Resource;
@@ -22,16 +24,15 @@ public class InsertController {
      */
     @RequestMapping(value = {"/order"}, method = {RequestMethod.POST})
     @Transactional
-    public Object createOrder(@RequestParam("jsonStr") String jsonStr) {
-        System.out.println(jsonStr);
-        return null;
+    public void createOrder(@RequestBody PackOrderBillInsertInfo packOrderBillInsertInfo) {
+
     }
 
     /**
      * 插入物流信息,由服务端提供
      */
     @RequestMapping(value = {"/transport"}, method = {RequestMethod.POST})
-    public Object insertTransport(@RequestParam("newPackage") Map<String, Object> newTransport) {
+    public Object insertTransport(@RequestBody Transport transport) {
         return null;
     }
 
@@ -39,7 +40,7 @@ public class InsertController {
      * 新增出事载体，服务端输入
      */
     @RequestMapping(value = {"/damageRecord"}, method = {RequestMethod.POST})
-    public Object insertDamageRecord(@RequestParam("newPackage") Map<String, Object> newDamageRecord) {
+    public Object insertDamageRecord(@RequestBody DamageRecord damageRecord) {
         return null;
     }
 

@@ -11,7 +11,7 @@
         <result property="receiveDetailAddress" column="receive_detail_address"/>
     </resultMap>
     <resultMap id="transportResultMap"
-               type="scc1.java_project.deliver_server.POJO.Transport">
+               type="scc1.java_project.deliver_server.dbEntity.Transport">
         <result property="transportId" column="transport_id"/>
         <result property="orderId" column="order_id"/>
         <result property="carrierId" column="carrier_id"/>

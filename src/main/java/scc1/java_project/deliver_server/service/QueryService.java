@@ -1,10 +1,9 @@
 package scc1.java_project.deliver_server.service;
 
 
-import org.apache.ibatis.session.RowBounds;
 import scc1.java_project.deliver_server.POJO.*;
+import scc1.java_project.deliver_server.dbEntity.Transport;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 public interface QueryService {
