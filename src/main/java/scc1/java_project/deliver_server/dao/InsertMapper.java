@@ -1,7 +1,8 @@
 package scc1.java_project.deliver_server.dao;
 
 import scc1.java_project.deliver_server.POJO.*;
-import scc1.java_project.deliver_server.POJO.Package;
+import scc1.java_project.deliver_server.dbEntity.*;
+import scc1.java_project.deliver_server.dbEntity.Package;
 
 public interface InsertMapper {
     /**

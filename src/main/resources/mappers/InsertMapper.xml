@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="scc1.java_project.deliver_server.dao.InsertMapper">
-    <parameterMap id="package" type="scc1.java_project.deliver_server.POJO.Package"/>
-    <parameterMap id="order" type="scc1.java_project.deliver_server.POJO.Order"/>
-    <parameterMap id="bill" type="scc1.java_project.deliver_server.POJO.Bill"/>
-    <parameterMap id="transport" type="scc1.java_project.deliver_server.POJO.Transport"/>
-    <parameterMap id="damageRecord" type="scc1.java_project.deliver_server.POJO.DamageRecord"/>
+    <parameterMap id="package" type="scc1.java_project.deliver_server.dbEntity.Package"/>
+    <parameterMap id="order" type="scc1.java_project.deliver_server.dbEntity.Order"/>
+    <parameterMap id="bill" type="scc1.java_project.deliver_server.dbEntity.Bill"/>
+    <parameterMap id="transport" type="scc1.java_project.deliver_server.dbEntity.Transport"/>
+    <parameterMap id="damageRecord" type="scc1.java_project.deliver_server.dbEntity.DamageRecord"/>
 
     <insert id="insertPackage" parameterMap="package">
         insert into package (package_id, package_type, package_weight, is_dangerous, is_international, detail_message)
@@ -29,9 +29,9 @@
     <insert id="insertTransport" parameterMap="transport">
         insert into transport (transport_id, order_id, carrier_id, carrier_type, transport_times_of_carrier,
                                 input_time, output_time, next_carrier_id, next_carrier_type, status,
-                                detail_massage)
+                               trans_detail_message)
         values (#{transportId}, #{orderId}, #{carrierId}, #{carrierType}, #{transportTimesOfCarrier},
-                #{inputTime}, #{outputTime}, #{nextCarrierId}, #{nextCarrierType}, #{status}, #{detailMassage});
+                #{inputTime}, #{outputTime}, #{nextCarrierId}, #{nextCarrierType}, #{status}, #{transDetailMessage});
     </insert>
 
     <insert id="insertDamageRecord" parameterMap="damageRecord">

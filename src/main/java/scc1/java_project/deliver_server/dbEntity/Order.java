@@ -21,4 +21,9 @@ public class Order {
     private Timestamp actualArriveTime;
     private String orderStatus;
     private Boolean isReturned;
+
+    public Order(long orderId, long packageId) {
+        this.orderId = orderId;
+        this.packageId = packageId;
+    }
 }
