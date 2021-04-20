@@ -29,7 +29,7 @@ public class UsersController {
      * @param type 用户类型（0客户，1管理员）用于不同的表
      */
     @RequestMapping(value = {"/login"}, method = {RequestMethod.GET})
-    public String login(@RequestParam("phone_number") long phoneNumber,
+    public Customer login(@RequestParam("phone_number") long phoneNumber,
                           @RequestParam("password") String password,
                           @RequestParam("type") int type) throws Exception {
         return usersService.login(phoneNumber, password, type);

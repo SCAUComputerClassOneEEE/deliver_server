@@ -3,6 +3,7 @@ package scc1.java_project.deliver_server.dao;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import scc1.java_project.deliver_server.POJO.StreetStatistics;
+import scc1.java_project.deliver_server.dbEntity.Customer;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface UserMapper {
     List<StreetStatistics> getTopStreet(RowBounds rowBounds);
 
     /*登入*/
-    String login(long customerId,String passWd);
+    Customer login(long customerId, String passWd);
 }

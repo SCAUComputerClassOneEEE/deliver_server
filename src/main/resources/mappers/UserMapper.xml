@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="scc1.java_project.deliver_server.dao.UserMapper">
+    <resultMap id="Customer" type="scc1.java_project.deliver_server.dbEntity.Customer">
+        <result column="customer_id" property="customerId"/>
+        <result column="customer_password" property="customerPassword"/>
+        <result column="customer_name" property="customerName"/>
+        <result column="detail_address" property="detailAddress"/>
+    </resultMap>
 
     <update id="updatePassWd" >
         UPDATE customer SET customer_password = #{newPassWd}
@@ -14,8 +20,8 @@
         ORDER BY number DESC ;
     </select>
 
-    <select id="login" resultType="string">
-        select customer_name
+    <select id="login" resultMap="Customer">
+        select *
         from customer
         where customer_id = #{customerId} and customer_password = #{passWd};
     </select>
