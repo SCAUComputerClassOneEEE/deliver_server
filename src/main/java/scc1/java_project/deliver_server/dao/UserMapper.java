@@ -8,9 +8,11 @@ import java.util.List;
 
 public interface UserMapper {
     /*修改密码*/
-    int updatePassWd(@Param("customerId") long customerId,
-                      @Param("newPassWd") String newPassWd);
+    int updatePassWd(long customerId, String newPassWd);
 
     /*获取街道人数排行榜*/
     List<StreetStatistics> getTopStreet(RowBounds rowBounds);
+
+    /*登入*/
+    String login(long customerId,String passWd);
 }

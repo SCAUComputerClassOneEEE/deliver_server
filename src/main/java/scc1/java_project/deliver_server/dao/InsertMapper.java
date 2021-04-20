@@ -14,7 +14,7 @@ public interface InsertMapper {
      * is_international
      * detail_message）
      */
-    int insertPackage(Package packaged);
+    long insertPackage(Package packaged);
 
     /**
      * 插入订单
@@ -32,7 +32,7 @@ public interface InsertMapper {
      * order_status
      * is_returned）
      */
-    int insertOrder(Order order);
+    long insertOrder(Order order);
 
     /**
      * 插入账单
@@ -43,7 +43,7 @@ public interface InsertMapper {
      * pay_type
      * is_paid)
      */
-    int insertBill(Bill bill);
+    void insertBill(Bill bill);
 
     /**
      * 插入物流信息

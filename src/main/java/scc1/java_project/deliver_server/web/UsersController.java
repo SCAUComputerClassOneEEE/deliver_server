@@ -27,13 +27,11 @@ public class UsersController {
      * @param phoneNumber 手机号
      * @param password 密码
      * @param type 用户类型（0客户，1管理员）用于不同的表
-     * @return 客户对象，为null表示账号或密码错误
      */
     @RequestMapping(value = {"/login"}, method = {RequestMethod.GET})
-    public Customer login(@RequestParam("phone_number") long phoneNumber,
+    public String login(@RequestParam("phone_number") long phoneNumber,
                           @RequestParam("password") String password,
-                          @RequestParam("type") int type) {
-        System.out.println("phone_number:" + phoneNumber + " , password:" + password + ",type:" + type);
+                          @RequestParam("type") int type) throws Exception {
         return usersService.login(phoneNumber, password, type);
     }
 

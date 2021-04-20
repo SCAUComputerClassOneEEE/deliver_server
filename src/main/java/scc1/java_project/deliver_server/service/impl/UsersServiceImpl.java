@@ -17,8 +17,11 @@ public class UsersServiceImpl implements UsersService {
     private UserMapper userMapper;
 
     @Override
-    public Customer login(long phoneNumber, String password, int type) {
-        return null;
+    public String login(long phoneNumber, String password, int type) throws Exception {
+        String name = userMapper.login(phoneNumber, password);
+        if (name == null || "".equals(name) )
+            throw new Exception("查无此人");
+        return name;
     }
 
     @Override

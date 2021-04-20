@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="scc1.java_project.deliver_server.dao.UserMapper">
+
     <update id="updatePassWd" >
         UPDATE customer SET customer_password = #{newPassWd}
         WHERE customer_id = #{customerId};
@@ -11,5 +12,11 @@
         FROM customer
         GROUP BY street
         ORDER BY number DESC ;
+    </select>
+
+    <select id="login" resultType="string">
+        select customer_name
+        from customer
+        where customer_id = #{customerId} and customer_password = #{passWd};
     </select>
 </mapper>

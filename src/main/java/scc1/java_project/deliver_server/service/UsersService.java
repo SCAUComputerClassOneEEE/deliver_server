@@ -7,7 +7,7 @@ import scc1.java_project.deliver_server.POJO.StreetStatistics;
 import java.util.List;
 
 public interface UsersService {
-    Customer login(long phoneNumber, String password, int type);
+    String login(long phoneNumber, String password, int type) throws Exception;
 
     int modify(long customerId, String newPassWd);
 

@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class Bill {
     private Long orderId;
     private Long customerId;
-    private Long charge;
-    private Long batchNumber;
+    private Integer charge;
+    private Integer batchNumber;
     private String payType;
     private Boolean isPaid;
 

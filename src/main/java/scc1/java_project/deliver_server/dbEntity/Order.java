@@ -1,15 +1,19 @@
 package scc1.java_project.deliver_server.dbEntity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 // 订单
 public class Order {
-    private long orderId;
-    private long packageId;
+    private Long orderId;
+    private Long packageId;
     private String sendName;
     private String sendPhoneNumber;
     private String sendDetailAddress;

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
 import scc1.java_project.deliver_server.dbEntity.DamageRecord;
 import scc1.java_project.deliver_server.dbEntity.Transport;
+import scc1.java_project.deliver_server.service.InsertService;
 import scc1.java_project.deliver_server.service.QueryService;
 
 import javax.annotation.Resource;
@@ -18,6 +19,8 @@ import java.util.Map;
 public class InsertController {
     @Resource
     private QueryService queryService ;
+    @Resource
+    private InsertService insertService;
 
     /**
      * 新建一个订单。需要插入到三个表中（package、order、bill）
@@ -25,15 +28,15 @@ public class InsertController {
     @RequestMapping(value = {"/order"}, method = {RequestMethod.POST})
     @Transactional
     public void createOrder(@RequestBody PackOrderBillInsertInfo packOrderBillInsertInfo) {
-
+        insertService.createOrder(packOrderBillInsertInfo);
     }
 
     /**
      * 插入物流信息,由服务端提供
      */
     @RequestMapping(value = {"/transport"}, method = {RequestMethod.POST})
-    public Object insertTransport(@RequestBody Transport transport) {
-        return null;
+    public void insertTransport(@RequestBody Transport transport) {
+        insertService.insertTransport(transport);
     }
 
     /**
@@ -41,7 +44,7 @@ public class InsertController {
      */
     @RequestMapping(value = {"/damageRecord"}, method = {RequestMethod.POST})
     public Object insertDamageRecord(@RequestBody DamageRecord damageRecord) {
-        return null;
+        return insertService.insertDamageRecord(damageRecord);
     }
 
 }

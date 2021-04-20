@@ -1,7 +1,14 @@
 package scc1.java_project.deliver_server.POJO;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.sql.Timestamp;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PackOrderBillInsertInfo {
     // 发件人
     private String sName;
