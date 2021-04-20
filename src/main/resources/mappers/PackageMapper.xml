@@ -21,7 +21,7 @@
         <result property="outputTime" column="output_time"/>
         <result property="nextCarrierId" column="next_carrier_id"/>
         <result property="nextCarrierType" column="next_carrier_type"/>
-        <result property="detailMessage" column="trans_detail_message"/>
+        <result property="transDetailMessage" column="trans_detail_message"/>
     </resultMap>
     <parameterMap id="package" type="scc1.java_project.deliver_server.dbEntity.Package"/>
     <parameterMap id="order" type="scc1.java_project.deliver_server.dbEntity.Order"/>
