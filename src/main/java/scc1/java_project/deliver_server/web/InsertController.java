@@ -27,8 +27,8 @@ public class InsertController {
      */
     @RequestMapping(value = {"/order"}, method = {RequestMethod.POST})
     @Transactional
-    public void createOrder(@RequestBody PackOrderBillInsertInfo packOrderBillInsertInfo) {
-        insertService.createOrder(packOrderBillInsertInfo);
+    public Long createOrder(@RequestBody PackOrderBillInsertInfo packOrderBillInsertInfo) {
+        return insertService.createOrder(packOrderBillInsertInfo);
     }
 
     /**

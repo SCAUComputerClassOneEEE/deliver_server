@@ -25,7 +25,7 @@ public class InsertServiceImpl implements InsertService {
 
     @Override
     @Transactional
-    public void createOrder(PackOrderBillInsertInfo info) {
+    public Long createOrder(PackOrderBillInsertInfo info) {
         Package aPackage = new Package(null, info.getPackType(),
                 info.getPackWeight(), info.isDangerous(), info.isInter(), info.getDetailMess());
         System.out.println("packageId:" + aPackage.getPackageId());
@@ -33,7 +33,9 @@ public class InsertServiceImpl implements InsertService {
                 info.getCName(), info.getCPhoneNumber(), info.getAddress(), null, info.getCommitArriveTime(), null,
                 "create", false);
         System.out.println("orderId:" + order.getOrderId());
-        insertMapper.insertBill(new Bill(order.getOrderId(), info.getCustomerId(), info.getCharge(), null, info.getPayType(), false));
+        Bill bill = new Bill(order.getOrderId(), info.getCustomerId(), info.getCharge(), null, info.getPayType(), false);
+        insertMapper.insertBill(bill);
+        return order.getOrderId();
     }
 
     @Override

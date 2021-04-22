@@ -21,7 +21,7 @@
                 , #{isReturned}, #{receiveDetailAddress}, #{commitArriveTime}, #{actualArriveTime});
     </insert>
 
-    <insert id="insertBill" parameterMap="bill">
+    <insert id="insertBill" parameterMap="bill" useGeneratedKeys="true" keyProperty="orderId">
         insert into bill (order_id, customer_id, charge, batch_number, pay_type, is_paid)
         values (#{orderId}, #{customerId}, #{charge}, #{batchNumber}, #{payType}, #{isPaid});
     </insert>

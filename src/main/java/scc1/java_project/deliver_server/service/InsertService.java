@@ -5,7 +5,7 @@ import scc1.java_project.deliver_server.dbEntity.DamageRecord;
 import scc1.java_project.deliver_server.dbEntity.Transport;
 
 public interface InsertService {
-    void createOrder(PackOrderBillInsertInfo packOrderBillInsertInfo);
+    Long createOrder(PackOrderBillInsertInfo packOrderBillInsertInfo);
 
     int insertTransport(Transport transport);
 
