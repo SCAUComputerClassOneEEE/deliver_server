@@ -57,5 +57,10 @@ public class InsertTest {
         }
     }
 
+    @Test
+    public void update() {
+        usersController.updateCustomer(new Customer(13923658947l, "newPSD1", "lyx", null, null, null, null, null));
+    }
+
 
 }

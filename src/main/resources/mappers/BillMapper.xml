@@ -7,6 +7,14 @@
         <result property="number" column="bill_number"/>
     </resultMap>
 
+    <resultMap id="bill" type="scc1.java_project.deliver_server.dbEntity.Bill">
+        <result property="orderId" column="order_id"/>
+        <result property="customerId" column="customer_id"/>
+        <result property="batchNumber" column="batch_number"/>
+        <result property="payType" column="pay_type"/>
+        <result property="isPaid" column="is_paid"/>
+    </resultMap>
+
     <select id="getLastMonthArrears" resultType="double" parameterType="long">
         SELECT SUM(charge) FROM bill
         NATURAL JOIN `order` NATURAL JOIN customer
@@ -34,5 +42,11 @@
             GROUP BY customer_id
         )
         ORDER BY SUM(charge) DESC;
+    </select>
+
+    <select id="getBills" parameterType="long" resultMap="bill">
+        select *
+        from bill
+        where customer_id = #{customerId};
     </select>
 </mapper>

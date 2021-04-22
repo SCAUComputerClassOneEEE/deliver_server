@@ -13,4 +13,6 @@ public interface UsersService {
 
     /*获取街道人数排行榜*/
     List<StreetStatistics> getTopStreet(RowBounds rowBounds);
+
+    void updateCustomer(Customer customer);
 }

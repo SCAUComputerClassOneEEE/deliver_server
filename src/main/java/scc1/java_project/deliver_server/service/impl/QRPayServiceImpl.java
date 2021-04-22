@@ -1,6 +1,7 @@
 package scc1.java_project.deliver_server.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import scc1.java_project.deliver_server.dao.PackageMapper;
 import scc1.java_project.deliver_server.service.QRPayService;
 
@@ -12,7 +13,14 @@ public class QRPayServiceImpl implements QRPayService {
     private PackageMapper packageMapper;
 
     @Override
-    public void pay(long orderId){
-        packageMapper.delBill(orderId);
+    @Transactional
+    public boolean pay(String orderId) throws RuntimeException {
+        String[] ids = orderId.split(",");
+        for (String id : ids) {
+            if (packageMapper.delBill(Long.parseLong(id)) <= 0) {
+                throw new RuntimeException("订单不存在");
+            }
+        }
+        return true;
     }
 }

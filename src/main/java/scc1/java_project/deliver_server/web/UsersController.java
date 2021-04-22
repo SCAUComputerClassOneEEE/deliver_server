@@ -2,10 +2,7 @@ package scc1.java_project.deliver_server.web;
 
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import scc1.java_project.deliver_server.dbEntity.Customer;
 import scc1.java_project.deliver_server.POJO.StreetStatistics;
 import scc1.java_project.deliver_server.service.UsersService;
@@ -53,5 +50,10 @@ public class UsersController {
     @RequestMapping(value = "/street", method = RequestMethod.GET)
     public List<StreetStatistics> getTopStreet(@Param("offset") int offset, @Param("length") int length) {
         return usersService.getTopStreet(new RowBounds(offset, length));
+    }
+
+    @PostMapping("/customer")
+    public void updateCustomer(@RequestBody() Customer customer) {
+        usersService.updateCustomer(customer);
     }
 }

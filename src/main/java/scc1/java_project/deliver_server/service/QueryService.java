@@ -2,6 +2,7 @@ package scc1.java_project.deliver_server.service;
 
 
 import scc1.java_project.deliver_server.POJO.*;
+import scc1.java_project.deliver_server.dbEntity.Bill;
 import scc1.java_project.deliver_server.dbEntity.Transport;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface QueryService {
     Double arrearsLastMonth(long customerId);
 
     BillOfLastMonth spendLastMonth(long customerId);
+
+    List<Bill> getBills(long customerId);
 }

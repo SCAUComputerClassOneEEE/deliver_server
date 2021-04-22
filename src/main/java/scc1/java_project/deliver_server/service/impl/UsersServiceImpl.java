@@ -33,4 +33,9 @@ public class UsersServiceImpl implements UsersService {
     public List<StreetStatistics> getTopStreet(RowBounds rowBounds) {
         return userMapper.getTopStreet(rowBounds);
     }
+
+    @Override
+    public void updateCustomer(Customer customer) {
+        userMapper.update(customer);
+    }
 }

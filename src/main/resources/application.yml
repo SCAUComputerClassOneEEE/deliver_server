@@ -10,6 +10,11 @@ spring:
     multipart:
       max-file-size: 10MB
       max-request-size: 100MB
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /
 mybatis:
   mapper-locations: classpath:mappers/*Mapper.xml
   type-aliases-package: scc1.java_project.deliver_server.POJO,;scc1.java_project.deliver_server.dbEntity
+

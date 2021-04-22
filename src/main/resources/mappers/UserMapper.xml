@@ -25,4 +25,11 @@
         from customer
         where customer_id = #{customerId} and customer_password = #{passWd};
     </select>
+    
+    <update id="update" parameterType="Customer">
+        update customer
+        set customer_password = #{customerPassword}, customer_name = #{customerName}, city = #{city},
+            street = #{street}, detail_address = #{detailAddress}, account = #{account}, avatar = #{avatar}
+        where customer_id = #{customerId};
+    </update>
 </mapper>

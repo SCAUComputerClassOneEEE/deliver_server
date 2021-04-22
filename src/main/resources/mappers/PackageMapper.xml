@@ -79,4 +79,5 @@
     <update id="delBill" parameterType="long" >
         update bill set is_paid = 1 where order_id = #{orderId};
     </update>
+
 </mapper>

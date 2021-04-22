@@ -16,4 +16,7 @@ public interface UserMapper {
 
     /*登入*/
     Customer login(long customerId, String passWd);
+
+    /*更新用户*/
+    void update(Customer customer);
 }

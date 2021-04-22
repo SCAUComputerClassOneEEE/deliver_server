@@ -3,6 +3,8 @@ package scc1.java_project.deliver_server.web;
 import org.springframework.web.bind.annotation.*;
 import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
 import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
+import scc1.java_project.deliver_server.dao.BillStatisticsMapper;
+import scc1.java_project.deliver_server.dbEntity.Bill;
 import scc1.java_project.deliver_server.dbEntity.Transport;
 import scc1.java_project.deliver_server.service.QueryService;
 
@@ -16,7 +18,6 @@ import java.util.List;
  */
 public class QueryController {
     @Resource
-//    @Autowired
     private QueryService queryService ;
 
     /**
@@ -29,7 +30,6 @@ public class QueryController {
                                                 @RequestParam("length") int length) {
         return queryService.packageList(customerId, offset, length);
     }
-
 
     /**
      * 通过订单号查询完整的物流信息
@@ -63,4 +63,11 @@ public class QueryController {
     public BillOfLastMonth spendLastMonth(@RequestParam("customer_id") long customerId) {
         return queryService.spendLastMonth(customerId);
     }
+
+    @RequestMapping(value = "/bills", method = {RequestMethod.GET})
+    public List<Bill> getBills(@RequestParam("customer_id") long customerId) {
+        return queryService.getBills(customerId);
+    }
+
+
 }

@@ -4,6 +4,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
 import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
+import scc1.java_project.deliver_server.dbEntity.Bill;
 import scc1.java_project.deliver_server.dbEntity.Transport;
 import scc1.java_project.deliver_server.dao.BillStatisticsMapper;
 import scc1.java_project.deliver_server.dao.PackageMapper;
@@ -43,6 +44,13 @@ public class QueryServiceImpl implements QueryService {
     public BillOfLastMonth spendLastMonth(long customerId) {
         return billStatisticsMapper.getBillStatisticLastMonth(customerId);
     }
+
+    @Override
+    public List<Bill> getBills(long customerId) {
+        return billStatisticsMapper.getBills(customerId);
+    }
+
+
 }
 
 
