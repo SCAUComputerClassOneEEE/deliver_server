@@ -44,9 +44,18 @@
         ORDER BY SUM(charge) DESC;
     </select>
 
-    <select id="getBills" parameterType="long" resultMap="bill">
-        select *
-        from bill
-        where customer_id = #{customerId};
+    <select id="getBills" parameterType="long"
+            resultType="scc1.java_project.deliver_server.POJO.BillView">
+        SELECT
+            `order`.order_id AS orderId,
+            order_create_time AS orderCreateTime,
+            receive_name AS receiver,
+            order_status AS orderStatus,
+            charge
+        FROM
+            bill
+                LEFT JOIN `order` ON bill.order_id = `order`.order_id
+        WHERE
+            customer_id = #{customerId};
     </select>
 </mapper>

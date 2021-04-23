@@ -2,6 +2,7 @@ package scc1.java_project.deliver_server.web;
 
 import org.springframework.web.bind.annotation.*;
 import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
+import scc1.java_project.deliver_server.POJO.BillView;
 import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
 import scc1.java_project.deliver_server.dao.BillStatisticsMapper;
 import scc1.java_project.deliver_server.dbEntity.Bill;
@@ -65,7 +66,7 @@ public class QueryController {
     }
 
     @RequestMapping(value = "/bills", method = {RequestMethod.GET})
-    public List<Bill> getBills(@RequestParam("customer_id") long customerId) {
+    public List<BillView> getBills(@RequestParam("customer_id") long customerId) {
         return queryService.getBills(customerId);
     }
 
