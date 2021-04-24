@@ -27,5 +27,5 @@ public interface QueryService {
 
     BillOfLastMonth spendLastMonth(long customerId);
 
-    List<BillView> getBills(long customerId);
+    List<Bill> getBills(long customerId);
 }

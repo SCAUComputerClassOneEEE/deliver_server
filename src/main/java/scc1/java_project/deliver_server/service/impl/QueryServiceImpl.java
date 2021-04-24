@@ -3,7 +3,6 @@ package scc1.java_project.deliver_server.service.impl;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
 import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
-import scc1.java_project.deliver_server.POJO.BillView;
 import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
 import scc1.java_project.deliver_server.dbEntity.Bill;
 import scc1.java_project.deliver_server.dbEntity.Transport;
@@ -47,7 +46,7 @@ public class QueryServiceImpl implements QueryService {
     }
 
     @Override
-    public List<BillView> getBills(long customerId) {
+    public List<Bill> getBills(long customerId) {
         return billStatisticsMapper.getBills(customerId);
     }
 
