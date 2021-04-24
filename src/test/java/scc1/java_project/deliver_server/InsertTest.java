@@ -3,6 +3,7 @@ package scc1.java_project.deliver_server;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
+import scc1.java_project.deliver_server.dao.BillStatisticsMapper;
 import scc1.java_project.deliver_server.dao.InsertMapper;
 import scc1.java_project.deliver_server.dbEntity.*;
 import scc1.java_project.deliver_server.dbEntity.Package;
@@ -60,6 +61,14 @@ public class InsertTest {
     @Test
     public void update() {
         usersController.updateCustomer(new Customer(13923658947l, "newPSD1", "lyx", null, null, null, null, null));
+    }
+
+
+    @Resource
+    private BillStatisticsMapper billStatisticsMapper;
+    @Test
+    public void why() {
+        System.out.println(billStatisticsMapper.test(18899715136l));
     }
 
 

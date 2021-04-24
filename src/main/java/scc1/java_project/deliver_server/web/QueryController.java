@@ -71,8 +71,9 @@ public class QueryController {
 
     @RequestMapping(value = "/consumption", method = RequestMethod.GET)
     public BillOfLastMonth getBillOfLastMonth(@RequestParam("customer_id")long customerId) {
-        return queryService.spendLastMonth(customerId);
+        BillOfLastMonth billOfLastMonth = queryService.spendLastMonth(customerId);
+//        System.out.println(billOfLastMonth);
+        return billOfLastMonth;
     }
-
 
 }

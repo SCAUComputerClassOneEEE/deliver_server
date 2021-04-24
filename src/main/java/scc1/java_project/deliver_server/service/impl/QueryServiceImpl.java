@@ -42,7 +42,9 @@ public class QueryServiceImpl implements QueryService {
 
     @Override
     public BillOfLastMonth spendLastMonth(long customerId) {
-        return billStatisticsMapper.getBillStatisticLastMonth(customerId);
+        BillOfLastMonth billStatisticLastMonth = billStatisticsMapper.getBillStatisticLastMonth(customerId);
+        System.out.println(billStatisticLastMonth);
+        return billStatisticLastMonth;
     }
 
     @Override

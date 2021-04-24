@@ -24,7 +24,7 @@
     </select>
     <select id="getBillStatisticLastMonth"
             resultType="scc1.java_project.deliver_server.POJO.BillOfLastMonth"
-            parameterType="long">
+            parameterType="_long">
         SELECT
                customer_id AS customerId,
                COUNT(charge) as sendPacksCount,
@@ -63,5 +63,14 @@
                 LEFT JOIN `order` ON bill.order_id = `order`.order_id
         WHERE
             customer_id = #{customerId};
+    </select>
+
+    <select id="test"
+            resultType="int"
+            parameterType="long">
+        select count(charge)
+        from charge
+        where customer_id = #{customerId}
+        and pay_type = '月支付'
     </select>
 </mapper>
