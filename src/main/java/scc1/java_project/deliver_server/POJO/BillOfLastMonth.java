@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 @Data
 public class BillOfLastMonth {
     private long customerId;
-    private Integer sendPacksCount;
-    private Double moneyNumber;
-    private Double lastMonthArrears;
+    private int sendPacksCount;
+    private int moneyNumber;
+    private double lastMonthArrears;
 }
