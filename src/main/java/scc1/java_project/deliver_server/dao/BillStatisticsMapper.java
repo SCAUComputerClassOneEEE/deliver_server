@@ -15,5 +15,6 @@ public interface BillStatisticsMapper {
     BillOfLastMonth getBillStatisticLastMonth(long customerId);
     /*获取消费排行榜*/
     List<ConsumptionOfLastYear> getTopConsumptionOfLastYear(RowBounds rowBounds);
+    Integer test(long customerId);
     List<BillView> getBills(long customerId);
 }
