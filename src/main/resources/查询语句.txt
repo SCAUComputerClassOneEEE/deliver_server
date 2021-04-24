@@ -87,9 +87,7 @@ WHERE
 AND PERIOD_DIFF(
 	date_format(now(), '%Y%m'),
 	date_format(order_create_time, '%Y%m')
-) <= 1
-GROUP BY
-	pay_type;
+) <= 1 AND paid_type = '月支付';
 
 -- 8客户端提供数据，对用户信息进行更新（密码，卡号等等）
 UPDATE customer

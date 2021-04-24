@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="scc1.java_project.deliver_server.dao.BillStatisticsMapper">
-    <resultMap id="billOfLastMonthRM" type="scc1.java_project.deliver_server.POJO.BillOfLastMonth">
+<!--    <resultMap id="billOfLastMonthRM" type="scc1.java_project.deliver_server.POJO.BillOfLastMonth">
         <result property="payType" column="pay_type"/>
         <result property="count" column="bill_count"/>
         <result property="number" column="bill_number"/>
-    </resultMap>
+    </resultMap>-->
 
     <resultMap id="bill" type="scc1.java_project.deliver_server.dbEntity.Bill">
         <result property="orderId" column="order_id"/>
@@ -22,12 +22,17 @@
         AND PERIOD_DIFF(date_format(now(), '%Y%m'),date_format(order_create_time, '%Y%m')) &lt;= 1
         AND customer.customer_id = #{customerId};
     </select>
-    <select id="getBillStatisticLastMonth" resultMap="billOfLastMonthRM" parameterType="long">
-        SELECT pay_type, COUNT(charge) as bill_count, SUM(charge) as bill_number
+    <select id="getBillStatisticLastMonth"
+            resultType="scc1.java_project.deliver_server.POJO.BillOfLastMonth"
+            parameterType="long">
+        SELECT
+               customer_id AS customerId,
+               COUNT(charge) as sendPacksCount,
+               SUM(charge) as moneyNumber
         FROM bill NATURAL JOIN `order` NATURAL JOIN customer
         WHERE customer.customer_id = #{customerId}
         AND PERIOD_DIFF(date_format(now(), '%Y%m'), date_format(order_create_time, '%Y%m')) &lt;= 1
-        GROUP BY pay_type;
+        AND pay_type = '月支付';
     </select>
     <select id="getTopConsumptionOfLastYear"
             resultType="scc1.java_project.deliver_server.POJO.ConsumptionOfLastYear">
@@ -44,9 +49,19 @@
         ORDER BY SUM(charge) DESC;
     </select>
 
-    <select id="getBills" parameterType="long" resultMap="bill">
-        select *
-        from bill
-        where customer_id = #{customerId};
+    <select id="getBills" parameterType="long"
+            resultType="scc1.java_project.deliver_server.POJO.BillView">
+        SELECT
+            `order`.order_id AS orderId,
+            order_create_time AS orderCreateTime,
+            receive_name AS receiver,
+            order_status AS orderStatus,
+            is_paid AS isPaid,
+            charge
+        FROM
+            bill
+                LEFT JOIN `order` ON bill.order_id = `order`.order_id
+        WHERE
+            customer_id = #{customerId};
     </select>
 </mapper>
