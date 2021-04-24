@@ -26,9 +26,9 @@
             resultType="scc1.java_project.deliver_server.POJO.BillOfLastMonth"
             parameterType="_long">
         SELECT
-               customer_id AS customerId,
-               COUNT(charge) as sendPacksCount,
-               SUM(charge) as moneyNumber
+            customer.customer_id AS customerId,
+               COUNT(bill.charge) as sendPacksCount,
+               SUM(bill.charge) as moneyNumber
         FROM bill NATURAL JOIN `order` NATURAL JOIN customer
         WHERE customer.customer_id = #{customerId}
         AND PERIOD_DIFF(date_format(now(), '%Y%m'), date_format(order_create_time, '%Y%m')) &lt;= 1

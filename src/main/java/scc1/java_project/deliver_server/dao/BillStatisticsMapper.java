@@ -2,6 +2,7 @@ package scc1.java_project.deliver_server.dao;
 
 import org.apache.ibatis.session.RowBounds;
 import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
+import scc1.java_project.deliver_server.POJO.BillView;
 import scc1.java_project.deliver_server.POJO.ConsumptionOfLastYear;
 import scc1.java_project.deliver_server.dbEntity.Bill;
 
@@ -14,6 +15,5 @@ public interface BillStatisticsMapper {
     BillOfLastMonth getBillStatisticLastMonth(long customerId);
     /*获取消费排行榜*/
     List<ConsumptionOfLastYear> getTopConsumptionOfLastYear(RowBounds rowBounds);
-    List<Bill> getBills(long customerId);
-    Integer test(long customerId);
+    List<BillView> getBills(long customerId);
 }
