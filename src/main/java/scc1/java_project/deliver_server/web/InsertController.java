@@ -1,5 +1,6 @@
 package scc1.java_project.deliver_server.web;
 
+import org.apache.http.HttpRequest;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
@@ -28,6 +29,7 @@ public class InsertController {
     @RequestMapping(value = {"/order"}, method = {RequestMethod.POST})
     @Transactional
     public long createOrder(@RequestBody PackOrderBillInsertInfo packOrderBillInsertInfo) {
+        System.out.println(packOrderBillInsertInfo);
         return insertService.createOrder(packOrderBillInsertInfo);
     }
 

@@ -33,7 +33,7 @@ public class InsertTest {
                 "zhl", "13512742057", "a", new Timestamp(13512742057l),
                 "big", null, 10.1, false, false,
                 null, 12, 18899715136l);
-        insertController.createOrder(insertInfo);
+        //insertController.createOrder(insertInfo);
 //        PackOrderBillInsertInfo info = new PackOrderBillInsertInfo("1","2","3","4","5");
 //        insertController.createOrder(info);
 //        System.out.println(insertMapper.insertPackage(new Package(9l, "big", 3.22, false, true, null)));

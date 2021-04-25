@@ -25,18 +25,18 @@
     </resultMap>
     <resultMap id="PackOrderBillInsertInfo"
                type="scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo">
-        <result property="sName" column="send_name"/>
-        <result property="sPhoneNumber" column="send_phone_number"/>
+        <result property="shipperName" column="send_name"/>
+        <result property="shipperPhoneNumber" column="send_phone_number"/>
         <result property="departure" column="send_detail_address"/>
-        <result property="cName" column="receive_name"/>
-        <result property="cPhoneNumber" column="receive_phone_number"/>
+        <result property="consiggeeName" column="receive_name"/>
+        <result property="consiggeePhoneNumber" column="receive_phone_number"/>
         <result property="address" column="receive_detail_address"/>
         <result property="commitArriveTime" column="commit_arrive_time"/>
         <result property="packType" column="package_type"/>
         <result property="detailMess" column="detail_message"/>
         <result property="packWeight" column="package_weight"/>
-        <result property="isDangerous" column="is_dangerous"/>
-        <result property="isInter" column="is_international"/>
+        <result property="dangerous" column="is_dangerous"/>
+        <result property="inter" column="is_international"/>
         <result property="payType" column="pay_type"/>
         <result property="charge" column="charge"/>
         <result property="customerId" column="customer_id"/>

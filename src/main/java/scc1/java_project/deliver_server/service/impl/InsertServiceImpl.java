@@ -14,6 +14,8 @@ import scc1.java_project.deliver_server.service.InsertService;
 import scc1.java_project.deliver_server.service.QueryService;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
+import java.util.Date;
 
 
 @Repository
@@ -27,11 +29,13 @@ public class InsertServiceImpl implements InsertService {
     @Transactional
     public Long createOrder(PackOrderBillInsertInfo info) {
         Package aPackage = new Package(null, info.getPackType(),
-                info.getPackWeight(), info.isDangerous(), info.isInter(), info.getDetailMess());
+                info.getPackWeight(), info.getDangerous(), info.getInter(), info.getDetailMess());
+        insertMapper.insertPackage(aPackage);
         System.out.println("packageId:" + aPackage.getPackageId());
-        Order order = new Order(null, aPackage.getPackageId(), info.getSName(), info.getSPhoneNumber(), info.getDeparture(),
-                info.getCName(), info.getCPhoneNumber(), info.getAddress(), null, info.getCommitArriveTime(), null,
+        Order order = new Order(null, aPackage.getPackageId(), info.getShipperName(), info.getShipperPhoneNumber(), info.getDeparture(),
+                info.getConsiggeeName(), info.getConsiggeePhoneNumber(), info.getAddress(), new Timestamp(new Date().getTime()), info.getCommitArriveTime(), null,
                 "create", false);
+        insertMapper.insertOrder(order);
         System.out.println("orderId:" + order.getOrderId());
         Bill bill = new Bill(order.getOrderId(), info.getCustomerId(), info.getCharge(), null, info.getPayType(), false);
         insertMapper.insertBill(bill);
