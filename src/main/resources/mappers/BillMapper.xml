@@ -36,17 +36,19 @@
     </select>
     <select id="getTopConsumptionOfLastYear"
             resultType="scc1.java_project.deliver_server.POJO.ConsumptionOfLastYear">
-        SELECT customer_id, customer_name, SUM(charge)
-        FROM bill NATURAL JOIN `order` NATURAL JOIN customer
-        WHERE DATE_SUB(CURDATE(), INTERVAL 365 DAY) &lt;= date(order_create_time)
-        GROUP BY customer_id
-        HAVING SUM(charge) >= ALL (
-            SELECT SUM(charge)
-            FROM bill NATURAL JOIN `order`
-            WHERE DATE_SUB(CURDATE(), INTERVAL 365 DAY) &lt;= date(order_create_time)
-            GROUP BY customer_id
-        )
-        ORDER BY SUM(charge) DESC;
+        SELECT
+        customer_id as customerId,
+        customer_name as customerName,
+        COALESCE(SUM(charge),0) as consumption
+        FROM
+        bill
+        NATURAL JOIN `order`
+        NATURAL JOIN customer
+        WHERE
+        DATE_SUB(CURDATE(), INTERVAL 365 DAY) &lt;= date(order_create_time)
+        GROUP BY
+        customer_id
+        order by consumption desc ;
     </select>
 
     <select id="getBills" parameterType="long"

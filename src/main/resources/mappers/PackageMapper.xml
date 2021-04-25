@@ -81,18 +81,20 @@
 	        customer.customer_id = #{customerId};
     </select>
     <select id="getTopNumberOfLastYear"
-            resultType="scc1.java_project.deliver_server.POJO.ConsumptionOfLastYear">
-        SELECT customer_id as customerId, customer_name as customerName, COUNT(charge) as number
-        FROM bill NATURAL JOIN `order` NATURAL JOIN customer
-        WHERE DATE_SUB(CURDATE(), INTERVAL 365 DAY) &lt;= date(order_create_time)
-        GROUP BY customer_id
-        HAVING SUM(charge) >= ALL (
-            SELECT SUM(charge)
-            FROM bill NATURAL JOIN `order`
-            WHERE DATE_SUB(CURDATE(), INTERVAL 365 DAY) &lt;= date(order_create_time)
-            GROUP BY customer_id
-        )
-        ORDER BY COUNT(charge) DESC;
+            resultType="scc1.java_project.deliver_server.POJO.NumberOfLastYear">
+        SELECT
+        customer_id AS customerId,
+        customer_name AS customerName,
+        COALESCE (count(charge), 0) AS number
+        FROM
+        bill
+        NATURAL JOIN `order`
+        NATURAL JOIN customer
+        WHERE
+        DATE_SUB(CURDATE(), INTERVAL 365 DAY) &lt;= date(order_create_time)
+        GROUP BY
+        customer_id
+        order by number desc
     </select>
 
     <update id="delBill" parameterType="long" >
@@ -101,7 +103,7 @@
 
     <select id="getPackOrderBillInsertInfo" resultMap="PackOrderBillInsertInfo" parameterType="long">
         select send_name, send_phone_number, send_detail_address, receive_name, receive_phone_number,
-            receive_detail_address, commit_arrive_time, package_type, detail_message,
+            ,receive_detail_address, commit_arrive_time, package_type, detail_message,
                package_weight, is_dangerous, is_international, pay_type, charge,
                bill.customer_id
         from bill

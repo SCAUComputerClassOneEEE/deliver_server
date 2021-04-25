@@ -47,9 +47,10 @@ public class UsersController {
     }
 
     /*获取街道人数排行榜*/
-    @RequestMapping(value = "/street", method = RequestMethod.GET)
+        @RequestMapping(value = "/street", method = RequestMethod.GET)
     public List<StreetStatistics> getTopStreet(@Param("offset") int offset, @Param("length") int length) {
-        return usersService.getTopStreet(new RowBounds(offset, length));
+            System.out.println("??");
+            return usersService.getTopStreet(new RowBounds(offset, length));
     }
 
     @PostMapping("/customer")

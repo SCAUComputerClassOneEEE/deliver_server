@@ -3,11 +3,13 @@ package scc1.java_project.deliver_server;
 import org.apache.ibatis.session.RowBounds;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
 import scc1.java_project.deliver_server.dao.BillStatisticsMapper;
 import scc1.java_project.deliver_server.dao.PackageMapper;
 import scc1.java_project.deliver_server.dao.UserMapper;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @SpringBootTest
 class DeliverServerApplicationTests {
@@ -21,8 +23,8 @@ class DeliverServerApplicationTests {
 
     @Test
     void contextLoads() {
-//        List<SimpleOrderInfoBar> simpleOrderInfoBars = packageMapper.getSimpleOrderInfoBars(18899715136L,
-//                new RowBounds(0, 2));
+        packageMapper.getSimpleOrderInfoBars(18899715136L,
+                new RowBounds(2, 5)).forEach(System.out::println);
 //        simpleOrderInfoBars.forEach(System.out::println);
 //        List<Transport> transports = packageMapper.getTransports(1);
 //        transports.forEach(System.out::println);
