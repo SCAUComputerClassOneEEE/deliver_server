@@ -34,7 +34,7 @@ public class InsertServiceImpl implements InsertService {
         System.out.println("packageId:" + aPackage.getPackageId());
         Order order = new Order(null, aPackage.getPackageId(), info.getShipperName(), info.getShipperPhoneNumber(), info.getDeparture(),
                 info.getConsiggeeName(), info.getConsiggeePhoneNumber(), info.getAddress(), new Timestamp(new Date().getTime()), info.getCommitArriveTime(), null,
-                "create", false);
+                "揽件中", false);
         insertMapper.insertOrder(order);
         System.out.println("orderId:" + order.getOrderId());
         Bill bill = new Bill(order.getOrderId(), info.getCustomerId(), info.getCharge(), null, info.getPayType(), false);
