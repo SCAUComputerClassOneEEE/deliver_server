@@ -3,6 +3,7 @@ package scc1.java_project.deliver_server.web;
 import org.springframework.web.bind.annotation.*;
 import scc1.java_project.deliver_server.POJO.BillOfLastMonth;
 import scc1.java_project.deliver_server.POJO.BillView;
+import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
 import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
 import scc1.java_project.deliver_server.dao.BillStatisticsMapper;
 import scc1.java_project.deliver_server.dbEntity.Bill;
@@ -77,6 +78,11 @@ public class QueryController {
         BillOfLastMonth billOfLastMonth = queryService.spendLastMonth(customerId);
 //        System.out.println(billOfLastMonth);
         return billOfLastMonth;
+    }
+
+    @RequestMapping(value = "/pob", method = RequestMethod.GET)
+    public PackOrderBillInsertInfo getPackOrderBillInsertInfo(@RequestParam("order_id") long orderId) {
+        return queryService.getPackOrderBillInsertInfo(orderId);
     }
 
 }

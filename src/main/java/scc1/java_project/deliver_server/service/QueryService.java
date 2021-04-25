@@ -28,4 +28,6 @@ public interface QueryService {
     BillOfLastMonth spendLastMonth(long customerId);
 
     List<BillView> getBills(long customerId);
+
+    PackOrderBillInsertInfo getPackOrderBillInsertInfo(long orderId);
 }

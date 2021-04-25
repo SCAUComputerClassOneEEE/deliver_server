@@ -23,6 +23,25 @@
         <result property="nextCarrierType" column="next_carrier_type"/>
         <result property="transDetailMessage" column="trans_detail_message"/>
     </resultMap>
+    <resultMap id="PackOrderBillInsertInfo"
+               type="scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo">
+        <result property="sName" column="send_name"/>
+        <result property="sPhoneNumber" column="send_phone_number"/>
+        <result property="departure" column="send_detail_address"/>
+        <result property="cName" column="receive_name"/>
+        <result property="cPhoneNumber" column="receive_phone_number"/>
+        <result property="address" column="receive_detail_address"/>
+        <result property="commitArriveTime" column="commit_arrive_time"/>
+        <result property="packType" column="package_type"/>
+        <result property="detailMess" column="detail_message"/>
+        <result property="packWeight" column="package_weight"/>
+        <result property="isDangerous" column="is_dangerous"/>
+        <result property="isInter" column="is_international"/>
+        <result property="payType" column="pay_type"/>
+        <result property="charge" column="charge"/>
+        <result property="customerId" column="customer_id"/>
+    </resultMap>
+
     <parameterMap id="package" type="scc1.java_project.deliver_server.dbEntity.Package"/>
     <parameterMap id="order" type="scc1.java_project.deliver_server.dbEntity.Order"/>
     <parameterMap id="bill" type="scc1.java_project.deliver_server.dbEntity.Bill"/>
@@ -79,5 +98,16 @@
     <update id="delBill" parameterType="long" >
         update bill set is_paid = 1 where order_id = #{orderId};
     </update>
+
+    <select id="getPackOrderBillInsertInfo" resultMap="PackOrderBillInsertInfo" parameterType="long">
+        select send_name, send_phone_number, send_detail_address, receive_name, receive_phone_number
+            receive_detail_address, commit_arrive_time, package_type, detail_message,
+               package_weight, is_dangerous, is_international, pay_type, charge,
+               bill.customer_id
+        from bill
+            natural join `order`
+            natural join package
+        where `order`.order_id = #{orderId};
+    </select>
 
 </mapper>

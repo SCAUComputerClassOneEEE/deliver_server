@@ -2,6 +2,7 @@ package scc1.java_project.deliver_server.dao;
 
 import org.apache.ibatis.session.RowBounds;
 import scc1.java_project.deliver_server.POJO.NumberOfLastYear;
+import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
 import scc1.java_project.deliver_server.POJO.SimpleOrderInfoBar;
 import scc1.java_project.deliver_server.dbEntity.Bill;
 import scc1.java_project.deliver_server.dbEntity.Order;
@@ -22,4 +23,6 @@ public interface PackageMapper {
 
     /*删除账单*/
     int delBill(Long billId);
+
+    PackOrderBillInsertInfo getPackOrderBillInsertInfo(long orderId);
 }

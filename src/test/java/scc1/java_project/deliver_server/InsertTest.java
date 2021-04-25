@@ -5,6 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
 import scc1.java_project.deliver_server.dao.BillStatisticsMapper;
 import scc1.java_project.deliver_server.dao.InsertMapper;
+import scc1.java_project.deliver_server.dao.PackageMapper;
 import scc1.java_project.deliver_server.dbEntity.*;
 import scc1.java_project.deliver_server.dbEntity.Package;
 import scc1.java_project.deliver_server.service.InsertService;
@@ -71,5 +72,11 @@ public class InsertTest {
         System.out.println(billStatisticsMapper.test(18899715136l));
     }
 
+    @Resource
+    private PackageMapper packageMapper;
 
+    @Test
+    public void pob() {
+        System.out.println(packageMapper.getPackOrderBillInsertInfo(12));
+    }
 }
