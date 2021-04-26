@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public class UsersController {
 
-    private static final Map<String, String> adminMap = new HashMap<>();
+    private static final Map<Long, String> adminMap = new HashMap<>();
 
     static {
         InputStream resourceAsStream = UsersController.class.getResourceAsStream("/static/adminLogin.txt");
@@ -32,7 +32,7 @@ public class UsersController {
         try {
             while ((s = bufferedReader.readLine()) != null) {
                 String[] s1 = s.split(" ");
-                adminMap.put(s1[0], s1[1]);
+                adminMap.put(Long.parseLong(s1[0]), s1[1]);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,8 +55,8 @@ public class UsersController {
                           @RequestParam("type") int type) throws Exception {
         if (type == 0) return usersService.login(phoneNumber, password, type);
         else {
-            String s = adminMap.get(String.valueOf(phoneNumber));
-            if ( s != null && !s.equals(password)) {
+            String s = adminMap.get(phoneNumber);
+            if ( s != null && s.equals(password)) {
                 Customer customer = new Customer();
                 customer.setCustomerName(String.valueOf(phoneNumber));
                 customer.setCustomerPassword(password);

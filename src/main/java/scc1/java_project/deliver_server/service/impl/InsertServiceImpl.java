@@ -1,5 +1,6 @@
 package scc1.java_project.deliver_server.service.impl;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
@@ -59,7 +60,9 @@ public class InsertServiceImpl implements InsertService {
     }
 
     @Override
-    public void updateCarrier(Carrier carrier) {
+    public void updateCarrier(Carrier carrier) throws NotFoundException {
+        if (insertMapper.checkCarrierExist(carrier.getCarrierId(), carrier.getCarrierType()) == 0)
+            throw new NotFoundException("");
         insertMapper.updateCarrier(carrier);
     }
 }

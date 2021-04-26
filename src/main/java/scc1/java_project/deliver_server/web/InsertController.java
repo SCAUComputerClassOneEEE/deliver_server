@@ -1,6 +1,7 @@
 package scc1.java_project.deliver_server.web;
 
 import org.apache.http.HttpRequest;
+import org.apache.ibatis.javassist.NotFoundException;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
@@ -36,7 +37,7 @@ public class InsertController {
     }
 
     @PostMapping(value = "/carriers_u")
-    public void updateCarrierIfPresence(@RequestBody Carrier carrier) {
+    public void updateCarrierIfPresence(@RequestBody Carrier carrier) throws NotFoundException {
         insertService.updateCarrier(carrier);
     }
 

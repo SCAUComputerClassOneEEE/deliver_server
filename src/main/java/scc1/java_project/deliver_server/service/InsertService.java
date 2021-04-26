@@ -1,5 +1,6 @@
 package scc1.java_project.deliver_server.service;
 
+import org.apache.ibatis.javassist.NotFoundException;
 import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
 import scc1.java_project.deliver_server.dbEntity.DamageRecord;
 import scc1.java_project.deliver_server.dbEntity.Transport;
@@ -14,5 +15,5 @@ public interface InsertService {
 
     void insertCarrier(Carrier carrier);
 
-    void updateCarrier(Carrier carrier);
+    void updateCarrier(Carrier carrier) throws NotFoundException;
 }

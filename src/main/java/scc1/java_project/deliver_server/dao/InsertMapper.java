@@ -1,5 +1,7 @@
 package scc1.java_project.deliver_server.dao;
 
+import org.apache.ibatis.annotations.Results;
+import org.apache.ibatis.annotations.Select;
 import scc1.java_project.deliver_server.POJO.*;
 import scc1.java_project.deliver_server.dbEntity.*;
 import scc1.java_project.deliver_server.dbEntity.Package;
@@ -72,4 +74,7 @@ public interface InsertMapper {
     void insertCarrier(Carrier carrier);
 
     void updateCarrier(Carrier carrier);
+
+    @Select("SELECT COUNT(carrier_id) FROM carrier WHERE carrier_id = #{carrierId} AND carrier_type = #{carrierType}")
+    int checkCarrierExist(long carrierId, String carrierType);
 }
