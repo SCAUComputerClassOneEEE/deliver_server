@@ -23,7 +23,7 @@ class DeliverServerApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(userMapper.getOneCustomerById(13923658947L));
+        billStatisticsMapper.getTopConsumptionOfLastYear(new RowBounds(0,10)).forEach(System.out::println);
     }
 
     static class ListNode {

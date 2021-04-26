@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class ConsumptionOfLastYear {
-    private Long orderId;
+    private Long customerId;
     private String customerName;
     private Double consumption;
 }
