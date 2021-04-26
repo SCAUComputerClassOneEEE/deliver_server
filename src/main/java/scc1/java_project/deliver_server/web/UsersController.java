@@ -1,5 +1,6 @@
 package scc1.java_project.deliver_server.web;
 
+import lombok.Data;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +10,10 @@ import scc1.java_project.deliver_server.POJO.StreetStatistics;
 import scc1.java_project.deliver_server.service.UsersService;
 
 import javax.annotation.Resource;
+import java.io.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping({"/user"})
@@ -17,6 +21,25 @@ import java.util.List;
  * 客户和管理员的登入修改
  */
 public class UsersController {
+
+    private static final Map<String, String> adminMap = new HashMap<>();
+
+    static {
+        InputStream resourceAsStream = UsersController.class.getResourceAsStream("/static/adminLogin.txt");
+        assert resourceAsStream != null;
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(resourceAsStream));
+        String s;
+        try {
+            while ((s = bufferedReader.readLine()) != null) {
+                String[] s1 = s.split(" ");
+                adminMap.put(s1[0], s1[1]);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println(adminMap);
+    }
+
     @Resource
     private UsersService usersService;
 
@@ -30,7 +53,17 @@ public class UsersController {
     public Customer login(@RequestParam("phone_number") long phoneNumber,
                           @RequestParam("password") String password,
                           @RequestParam("type") int type) throws Exception {
-        return usersService.login(phoneNumber, password, type);
+        if (type == 0) return usersService.login(phoneNumber, password, type);
+        else {
+            String s = adminMap.get(String.valueOf(phoneNumber));
+            if ( s != null && !s.equals(password)) {
+                Customer customer = new Customer();
+                customer.setCustomerName(String.valueOf(phoneNumber));
+                customer.setCustomerPassword(password);
+                return customer;
+            }
+            else return null;
+        }
     }
 
     /**

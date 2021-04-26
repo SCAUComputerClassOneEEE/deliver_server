@@ -9,10 +9,4 @@ public class Carrier {
     private Long deliveryTimes;
     private String connectPhoneNumber;
     private String detailMessage;
-
-    public Carrier() {
-        carrierId = 0L;
-        carrierType = "end";
-        deliveryTimes = 1L;
-    }
 }
