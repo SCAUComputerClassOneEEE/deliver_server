@@ -48,6 +48,8 @@ public class InsertTest {
 //        insertService.insertDamageRecord(new DamageRecord(3l, "warehouse", null));
 //        insertMapper.insertTransport(new Transport(6l, 1l, 5l, "sky", null, null, null, 0l, "end", null, null));
 //        insertService.createOrder();
+        Carrier carrier = new Carrier();
+        insertMapper.updateCarrier(carrier);
     }
 
     @Test

@@ -69,4 +69,7 @@ public interface InsertMapper {
      */
     int insertDamageRecord(DamageRecord damageRecord);
 
+    void insertCarrier(Carrier carrier);
+
+    void updateCarrier(Carrier carrier);
 }

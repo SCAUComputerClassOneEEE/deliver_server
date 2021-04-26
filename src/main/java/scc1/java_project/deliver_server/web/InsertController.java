@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import scc1.java_project.deliver_server.POJO.PackOrderBillInsertInfo;
 import scc1.java_project.deliver_server.dbEntity.DamageRecord;
 import scc1.java_project.deliver_server.dbEntity.Transport;
+import scc1.java_project.deliver_server.dbEntity.Carrier;
+
 import scc1.java_project.deliver_server.service.InsertService;
 import scc1.java_project.deliver_server.service.QueryService;
 
@@ -22,6 +24,21 @@ public class InsertController {
     private QueryService queryService ;
     @Resource
     private InsertService insertService;
+
+    /**
+     * create new carrier from admin
+     * @param carrier entity carrier
+     * @return 0-presence or 1-absence
+     */
+    @PostMapping(value = "/carriers")
+    public void createOneCarrierIfAbsence(@RequestBody Carrier carrier) {
+        insertService.insertCarrier(carrier);
+    }
+
+    @PostMapping(value = "/carriers_u")
+    public void updateCarrierIfPresence(@RequestBody Carrier carrier) {
+        insertService.updateCarrier(carrier);
+    }
 
     /**
      * 新建一个订单。需要插入到三个表中（package、order、bill）

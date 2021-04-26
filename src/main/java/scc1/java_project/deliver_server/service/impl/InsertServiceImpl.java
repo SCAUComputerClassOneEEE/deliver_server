@@ -10,6 +10,7 @@ import scc1.java_project.deliver_server.dbEntity.DamageRecord;
 import scc1.java_project.deliver_server.dbEntity.Order;
 import scc1.java_project.deliver_server.dbEntity.Package;
 import scc1.java_project.deliver_server.dbEntity.Transport;
+import scc1.java_project.deliver_server.dbEntity.Carrier;
 import scc1.java_project.deliver_server.service.InsertService;
 import scc1.java_project.deliver_server.service.QueryService;
 
@@ -50,5 +51,15 @@ public class InsertServiceImpl implements InsertService {
     @Override
     public int insertDamageRecord(DamageRecord damageRecord) {
         return insertMapper.insertDamageRecord(damageRecord);
+    }
+
+    @Override
+    public void insertCarrier(Carrier carrier) {
+        insertMapper.insertCarrier(carrier);
+    }
+
+    @Override
+    public void updateCarrier(Carrier carrier) {
+        insertMapper.updateCarrier(carrier);
     }
 }

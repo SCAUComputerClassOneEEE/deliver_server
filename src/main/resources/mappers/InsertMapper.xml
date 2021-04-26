@@ -39,4 +39,15 @@
         values (#{carrierId}, #{carrierType}, #{damageRecordTime});
     </insert>
 
+    <insert id="insertCarrier" parameterType="Carrier">
+        insert into carrier (carrier_id, carrier_type, delivery_times, connect_phone_number, detail_message)
+        VALUES (#{carrierId}, #{carrierType}, #{deliveryTimes}, #{connectPhoneNumber}, #{detailMessage})
+    </insert>
+
+    <update id="updateCarrier" parameterType="Carrier">
+        update carrier
+        set delivery_times = #{deliveryTimes}, connect_phone_number = #{connectPhoneNumber}, detail_message = #{detailMessage}
+        where carrier_id = #{carrierId} and carrier_type = #{carrierType};
+    </update>
+
 </mapper>
