@@ -8,18 +8,19 @@ import scc1.java_project.deliver_server.service.QRPayService;
 import javax.annotation.Resource;
 
 @Controller
+@RequestMapping("/payBill")
 public class QRPayController {
     @Resource
     private QRPayService qrPayService;
 
     @RequestMapping("/QRPay")
-    public String pay(@RequestParam("orderId") String orderId) {
+    public String pay(@RequestParam("id") String orderId) {
         try {
             System.out.println(orderId);
             qrPayService.pay(orderId);
         } catch (RuntimeException e) {
             return "fail";
         }
-        return "ok";
+        return "doit";
     }
 }

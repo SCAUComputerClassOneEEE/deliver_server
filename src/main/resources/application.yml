@@ -1,6 +1,9 @@
 server:
   port: 8080
 spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .jsp
   datasource:
     url: jdbc:mysql://139.199.66.139:3306/database_system?characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -14,6 +17,7 @@ spring:
     view:
       suffix: .jsp
       prefix: /
+
 mybatis:
   mapper-locations: classpath:mappers/*Mapper.xml
   type-aliases-package: scc1.java_project.deliver_server.POJO,;scc1.java_project.deliver_server.dbEntity
