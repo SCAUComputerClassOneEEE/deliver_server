@@ -3,6 +3,7 @@ package scc1.java_project.deliver_server.service.impl;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Service;
+import scc1.java_project.deliver_server.POJO.NoteSimpleRecord;
 import scc1.java_project.deliver_server.dbEntity.Customer;
 import scc1.java_project.deliver_server.POJO.StreetStatistics;
 import scc1.java_project.deliver_server.dao.UserMapper;
@@ -22,6 +23,11 @@ public class UsersServiceImpl implements UsersService {
         if (customer == null)
             throw new Exception("查无此人");
         return customer;
+    }
+
+    @Override
+    public NoteSimpleRecord getNoteSimpleRecord(long id) {
+        return userMapper.getNoteSimpleRecord(id);
     }
 
     @Override

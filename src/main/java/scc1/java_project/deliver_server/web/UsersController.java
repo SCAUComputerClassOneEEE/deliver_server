@@ -3,6 +3,7 @@ package scc1.java_project.deliver_server.web;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.web.bind.annotation.*;
+import scc1.java_project.deliver_server.POJO.NoteSimpleRecord;
 import scc1.java_project.deliver_server.dbEntity.Customer;
 import scc1.java_project.deliver_server.POJO.StreetStatistics;
 import scc1.java_project.deliver_server.service.UsersService;
@@ -51,15 +52,20 @@ public class UsersController {
         return usersService.getOneCustomerById(customerId);
     }
 
+    @GetMapping(value = "/note")
+    public NoteSimpleRecord getNoteSimpleRecord(@RequestParam("customer_id") long customerId) {
+        return usersService.getNoteSimpleRecord(customerId);
+    }
+
     /*获取街道人数排行榜*/
-        @RequestMapping(value = "/street", method = RequestMethod.GET)
+    @RequestMapping(value = "/street", method = RequestMethod.GET)
     public List<StreetStatistics> getTopStreet(@Param("offset") int offset, @Param("length") int length) {
             System.out.println("??");
             return usersService.getTopStreet(new RowBounds(offset, length));
     }
 
     @PostMapping("/customer")
-    public void updateCustomer(@RequestBody() Customer customer) {
+    public void updateCustomer(@RequestBody Customer customer) {
         usersService.updateCustomer(customer);
     }
 }

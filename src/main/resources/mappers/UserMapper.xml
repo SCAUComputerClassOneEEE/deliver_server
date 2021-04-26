@@ -44,4 +44,20 @@
         from customer
         where customer_id = #{id}
      </select>
+
+    <select id="getNoteSimpleRecord" resultType="NoteSimpleRecord" parameterType="long">
+        SELECT
+            transport.order_id as orderId,
+            transport.carrier_id as carrierId,
+            transport.carrier_type as carrierType,
+            transport.input_time as time,
+            transport.transport_times_of_carrier as transportTimesOfCarrier
+        FROM
+            transport
+                JOIN damage_record ON transport.carrier_id = damage_record.carrier_id
+                AND transport.carrier_type = damage_record.carrier_type
+                AND transport.transport_times_of_carrier = damage_record.damage_record_time
+                JOIN bill ON transport.order_id = bill.order_id
+        WHERE bill.customer_id = #{customerId};
+    </select>
 </mapper>

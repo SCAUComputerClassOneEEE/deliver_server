@@ -2,6 +2,7 @@ package scc1.java_project.deliver_server.dao;
 
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.session.RowBounds;
+import scc1.java_project.deliver_server.POJO.NoteSimpleRecord;
 import scc1.java_project.deliver_server.POJO.StreetStatistics;
 import scc1.java_project.deliver_server.dbEntity.Customer;
 
@@ -21,4 +22,6 @@ public interface UserMapper {
     void update(Customer customer);
 
     Customer getOneCustomerById(long id);
+
+    NoteSimpleRecord getNoteSimpleRecord(long customerId);
 }

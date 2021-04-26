@@ -1,6 +1,7 @@
 package scc1.java_project.deliver_server.service;
 
 import org.apache.ibatis.session.RowBounds;
+import scc1.java_project.deliver_server.POJO.NoteSimpleRecord;
 import scc1.java_project.deliver_server.dbEntity.Customer;
 import scc1.java_project.deliver_server.POJO.StreetStatistics;
 
@@ -16,4 +17,6 @@ public interface UsersService {
     Customer getOneCustomerById(long customerId);
 
     void updateCustomer(Customer customer);
+
+    NoteSimpleRecord getNoteSimpleRecord(long id);
 }
