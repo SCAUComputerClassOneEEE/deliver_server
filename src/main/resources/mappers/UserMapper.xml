@@ -32,4 +32,16 @@
             street = #{street}, detail_address = #{detailAddress}, account = #{account}, avatar = #{avatar}
         where customer_id = #{customerId};
     </update>
+
+    <select id="getOneCustomerById" resultType="Customer" parameterType="long">
+        select customer_id as customerId,
+               customer_name as customerName,
+               city,
+               street,
+               detail_address as detailAddress,
+               account,
+               avatar
+        from customer
+        where customer_id = #{id}
+     </select>
 </mapper>

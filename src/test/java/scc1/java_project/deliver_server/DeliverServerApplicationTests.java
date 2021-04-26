@@ -23,18 +23,7 @@ class DeliverServerApplicationTests {
 
     @Test
     void contextLoads() {
-        packageMapper.getSimpleOrderInfoBars(18899715136L,
-                new RowBounds(2, 5)).forEach(System.out::println);
-//        simpleOrderInfoBars.forEach(System.out::println);
-//        List<Transport> transports = packageMapper.getTransports(1);
-//        transports.forEach(System.out::println);
-//        System.out.println(packageMapper.getDamagePackOrderId(1));
-//        System.out.println(billStatisticsMapper.getLastMonthArrears(1));
-//        System.out.println(billStatisticsMapper.getBillStatisticLastMonth(1));
-//        userMapper.updatePassWd(18899715136L,"newPass");
-//        System.out.println(packageMapper.getNumberOfLastYear(new RowBounds(0, 10)));
-//        System.out.println(billStatisticsMapper.getConsumptionOfLastYear(new RowBounds(0, 10)));
-//        System.out.println(userMapper.getTopStreet(new RowBounds(0, 10)));
+        System.out.println(userMapper.getOneCustomerById(13923658947L));
     }
 
     static class ListNode {

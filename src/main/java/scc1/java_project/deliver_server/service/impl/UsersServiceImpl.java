@@ -25,6 +25,11 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public Customer getOneCustomerById(long customerId) {
+        return userMapper.getOneCustomerById(customerId);
+    }
+
+    @Override
     public int modify(long customerId, String newPassWd) {
         return userMapper.updatePassWd(customerId, newPassWd);
     }

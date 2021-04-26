@@ -46,6 +46,11 @@ public class UsersController {
         return usersService.modify(customerId, password) > 0;
     }
 
+    @GetMapping(value = "/customer")
+    public Customer getOneCustomer(@RequestParam("customer_id") long customerId) {
+        return usersService.getOneCustomerById(customerId);
+    }
+
     /*获取街道人数排行榜*/
         @RequestMapping(value = "/street", method = RequestMethod.GET)
     public List<StreetStatistics> getTopStreet(@Param("offset") int offset, @Param("length") int length) {
