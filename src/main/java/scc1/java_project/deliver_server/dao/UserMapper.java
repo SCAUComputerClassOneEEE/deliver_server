@@ -23,5 +23,5 @@ public interface UserMapper {
 
     Customer getOneCustomerById(long id);
 
-    NoteSimpleRecord getNoteSimpleRecord(long customerId);
+    List<NoteSimpleRecord> getNoteSimpleRecord(long customerId);
 }

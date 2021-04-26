@@ -18,5 +18,5 @@ public interface UsersService {
 
     void updateCustomer(Customer customer);
 
-    NoteSimpleRecord getNoteSimpleRecord(long id);
+    List<NoteSimpleRecord> getNoteSimpleRecord(long id);
 }

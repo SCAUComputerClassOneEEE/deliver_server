@@ -53,7 +53,7 @@ public class UsersController {
     }
 
     @GetMapping(value = "/note")
-    public NoteSimpleRecord getNoteSimpleRecord(@RequestParam("customer_id") long customerId) {
+    public List<NoteSimpleRecord> getNoteSimpleRecord(@RequestParam("customer_id") long customerId) {
         return usersService.getNoteSimpleRecord(customerId);
     }
 

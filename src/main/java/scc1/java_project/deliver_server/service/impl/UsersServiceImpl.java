@@ -26,7 +26,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public NoteSimpleRecord getNoteSimpleRecord(long id) {
+    public List<NoteSimpleRecord> getNoteSimpleRecord(long id) {
         return userMapper.getNoteSimpleRecord(id);
     }
 
