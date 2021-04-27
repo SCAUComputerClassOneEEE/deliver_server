@@ -15,10 +15,9 @@ spring:
       max-request-size: 100MB
   mvc:
     view:
-      suffix: .jsp
+      suffix: .html
       prefix: /
 
 mybatis:
   mapper-locations: classpath:mappers/*Mapper.xml
   type-aliases-package: scc1.java_project.deliver_server.POJO,;scc1.java_project.deliver_server.dbEntity
-

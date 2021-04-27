@@ -21,6 +21,12 @@ public class QRPayController {
         } catch (RuntimeException e) {
             return "fail";
         }
-        return "doit";
+        return "ok";
+    }
+
+    @RequestMapping("/hello")
+    public String hello() {
+        System.out.println("hello");
+        return "/ok";
     }
 }
